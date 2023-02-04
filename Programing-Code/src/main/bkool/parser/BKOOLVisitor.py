@@ -14,25 +14,5 @@ class BKOOLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by BKOOLParser#mptype.
-    def visitMptype(self, ctx:BKOOLParser.MptypeContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKOOLParser#body.
-    def visitBody(self, ctx:BKOOLParser.BodyContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKOOLParser#exp.
-    def visitExp(self, ctx:BKOOLParser.ExpContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKOOLParser#funcall.
-    def visitFuncall(self, ctx:BKOOLParser.FuncallContext):
-        return self.visitChildren(ctx)
-
-
 
 del BKOOLParser

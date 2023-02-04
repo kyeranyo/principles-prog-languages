@@ -1,1 +1,1 @@
-aAsVN,3,<EOF>
+a,Error Token A

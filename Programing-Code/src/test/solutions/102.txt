@@ -1,1 +1,1 @@
-aCBbdc,<EOF>
+a,Error Token C
