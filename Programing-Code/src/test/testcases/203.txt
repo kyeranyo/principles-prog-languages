@@ -1,1 +1,1 @@
-int main( {}
+float foo(int a, float c, d) body

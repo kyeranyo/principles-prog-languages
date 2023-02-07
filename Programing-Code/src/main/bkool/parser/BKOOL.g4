@@ -7,28 +7,29 @@ from lexererr import *
 options {
 	language = Python3;
 }
+// program: funcdecl | vardecl; funcdecl: 'funcdecl'; vardecl: 'vardecl';
+program: decls;
+decls: decl decl | decl;
+decl: vardecl | funcdecl;
 
-program: EOF;
+vardecl: typ idlist SEMI;
+funcdecl: typ ID paradecl body;
 
-/*
- LEXER PROGRAMING CODE:
- 
- * -> greedy
- *? -> non-greedy
+paradecl: LB paramlist RB;
+paramlist: paramterm |;
+paramterm: (typ idlist SEMI paramterm) | (typ idlist);
 
- */
-// // Q1
-// INDENIFIER: [a-z] [a-z0-9]*;
+idlist: ID COMMA idlist | ID; // a,b,c,d,e,f,g,h
+body: 'body';
 
-// // Q2
-// fragment DECIMAL_POINT: [0-9]+ '.' [0-9]+; 
-// fragment SCIENTIC_NONTATION: [0-9]+ '.'? [0-9]* ('e'|'E') '-'? [0-9]+; 
-// REAL: (DECIMAL_POINT | SCIENTIC_NONTATION);
-
-// Q3
-// STRINGLIT: SingQ (~['] | SingQ SingQ)* SingQ;
-// fragment SingQ: ['];
-INDENIFIER: [a-z] [a-z0-9]*;
+typ: INT | FLOAT;
+INT: 'int';
+FLOAT: 'float';
+LB: '(';
+RB: ')';
+COMMA: ',';
+SEMI: ';';
+ID: [a-zA-Z]+;
 
 WS: [ \t\r\n]+ -> skip; // skip spaces, tabs, newlines
 

@@ -13,5 +13,5 @@ class CheckCodeGenSuite(unittest.TestCase):
     	input = Program([
     		FuncDecl(Id("main"),[],VoidType(),Block([],[
     			CallExpr(Id("putInt"),[IntLiteral(5)])]))])
-        expect = "5"
-        self.assertTrue(TestCodeGen.test(input,expect,501))
+    	expect = "5"
+    	self.assertTrue(TestCodeGen.test(input,expect,501))
