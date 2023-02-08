@@ -14,55 +14,5 @@ class BKOOLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by BKOOLParser#decls.
-    def visitDecls(self, ctx:BKOOLParser.DeclsContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKOOLParser#decl.
-    def visitDecl(self, ctx:BKOOLParser.DeclContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKOOLParser#vardecl.
-    def visitVardecl(self, ctx:BKOOLParser.VardeclContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKOOLParser#funcdecl.
-    def visitFuncdecl(self, ctx:BKOOLParser.FuncdeclContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKOOLParser#paradecl.
-    def visitParadecl(self, ctx:BKOOLParser.ParadeclContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKOOLParser#paramlist.
-    def visitParamlist(self, ctx:BKOOLParser.ParamlistContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKOOLParser#paramterm.
-    def visitParamterm(self, ctx:BKOOLParser.ParamtermContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKOOLParser#idlist.
-    def visitIdlist(self, ctx:BKOOLParser.IdlistContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKOOLParser#body.
-    def visitBody(self, ctx:BKOOLParser.BodyContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKOOLParser#typ.
-    def visitTyp(self, ctx:BKOOLParser.TypContext):
-        return self.visitChildren(ctx)
-
-
 
 del BKOOLParser
