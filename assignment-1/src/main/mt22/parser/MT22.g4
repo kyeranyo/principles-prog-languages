@@ -26,16 +26,14 @@ BOOLEAN_LIT: FALSE | TRUE;
 fragment FALSE: 'false';
 fragment TRUE: 'true';
 
-STRING_LIT:
-	DUO_QUOTE (
-		.~[\\]
-		| BackSpace
-		| FormFeed
-		| CarriageReturn
-		| NewLine
-		| SingleQuote
-		| BackSlash
-	)* DUO_QUOTE;
+STRING_LIT: DUO_QUOTE (.~[\\]*? | Escape_Sequence*?) DUO_QUOTE;
+fragment Escape_Sequence:
+	BackSpace
+	| FormFeed
+	| CarriageReturn
+	| NewLine
+	| SingleQuote
+	;
 fragment DUO_QUOTE: ["];
 fragment SINGLE_QUOTE: ['];
 fragment BackSpace: [\b];
