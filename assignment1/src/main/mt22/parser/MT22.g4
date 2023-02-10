@@ -4,17 +4,97 @@ grammar MT22;
 from lexererr import *
 }
 
-options{
-	language=Python3;
+options {
+	language = Python3;
 }
 
-program:  EOF ;
+program: EOF;
 
-INDENTIFIERS: [a-z] [a-z0-9]*;
+INTEGER_LIT:
+	'0'
+	| [1-9][0-9]* (UNDERSCORE [0-9]+)* {self.text = self.text.replace("_","")};
 
-WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
+fragment UNDERSCORE: '_';
 
+FLOAT_LIT:
+	EXPPART
+	| DECPART {self.text = self.text.replace("_","")};
+fragment DECPART: INTEGER_LIT PERIOD [0-9]+ ([eE] [0-9]*)?;
+fragment EXPPART: [0-9]+ [eE] MINUS [0-9]+;
 
-ERROR_CHAR: .;
+BOOLEAN_LIT: FALSE | TRUE;
+fragment FALSE: 'false';
+fragment TRUE: 'true';
+
+STRING_LIT:
+	DUO_QUOTE (
+		.~[\\]
+		| BackSpace
+		| FormFeed
+		| CarriageReturn
+		| NewLine
+		| SingleQuote
+		| BackSlash
+	)* DUO_QUOTE;
+fragment DUO_QUOTE: ["];
+fragment SINGLE_QUOTE: ['];
+fragment BackSpace: [\b];
+fragment FormFeed: [\f];
+fragment CarriageReturn: [\r];
+fragment NewLine: [\n];
+fragment SingleQuote: '\'';
+fragment BackSlash: [\\];
+
+AUTO: 'auto';
+BREAK: 'break';
+INTEGER: 'integer';
+VOID: 'void';
+ARRAY: 'array';
+FLOAT: 'float';
+RETURN: 'return';
+OUT: 'out';
+BOOLEAN: 'boolean';
+FOR: 'for';
+STRING: 'string';
+CONTINUE: 'continue';
+DO: 'do';
+FUNCTION: 'function';
+OF: 'of';
+ELSE: 'else';
+IF: 'if';
+WHILE: 'while';
+INHERIT: 'inherit';
+
+fragment PLUS: '+';
+fragment MINUS: '-';
+fragment MUL: '*';
+fragment DIV: '/';
+fragment MOD: '%';
+fragment NOT: '!';
+AND: '&&';
+OR: '||';
+EQUAL_TO: '==';
+NOT_EQUAL: '!=';
+LESS: '<';
+GREATER: '>';
+LESS_THAN_OR_EQUAL: '<=';
+GREATER_THAN_OR_EQUAL: '>=';
+SCOPE_RES: '::';
+
+LB: '(';
+RB: ')';
+LSB: '[';
+RSB: ']';
+LCB: '{';
+RCB: '}';
+fragment PERIOD: '.';
+fragment COMMA: ',';
+fragment SEMI: ';';
+fragment EQUAL: '=';
+fragment COLON: ':';
+
+WS: [ \t\r\n]+ -> skip; // skip spaces, tabs, newlines
+
+ERROR_CHAR: .{raise ErrorToken(self.text)};
 UNCLOSE_STRING: .;
 ILLEGAL_ESCAPE: .;
