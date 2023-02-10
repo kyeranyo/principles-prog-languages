@@ -1,4 +1,4 @@
-# Generated from c:\Users\84865\Documents\BK-CSE20\CSE-PPL\assignment1\src\main\mt22\parser\MT22.g4 by ANTLR 4.9.2
+# Generated from c:\Users\84865\Documents\BK-CSE20\CSE-PPL\assignment-1\src\main\mt22\parser\MT22.g4 by ANTLR 4.9.2
 from antlr4 import *
 from io import StringIO
 import sys
