@@ -90,21 +90,21 @@ class LexerSuite(unittest.TestCase):
 
     def test_literals_string_3(self):
         """STRING LITERALS #3 CASE#15"""
-        input = "\"duchungho@$%^*7@()mail.com\b\""
-        expect = "\"duchungho@$%^*7@()mail.com\b\",<EOF>"
+        input = "\"duchungh\to@$%^*7@()mail.com\b\""
+        expect = "\"duchungh\to@$%^*7@()mail.com\b\",<EOF>"
         self.assertTrue(TestLexer.test(input, expect, 403))
 
-    # def test_literals_string_4(self):
-    #     """STRING LITERALS #4 CASE#16"""
-    #     input = "\"duchungh\no@$%^*7@()mail.com\""
-    #     expect = "\"duchungh\no@$%^*7@()mail.com\",<EOF>"
-    #     self.assertTrue(TestLexer.test(input, expect, 404))
+    def test_literals_string_4(self):
+        """STRING LITERALS #4 CASE#16"""
+        input = "\"duchungh\fo@$%^*7@()mail.com\""
+        expect = "\"duchungh\fo@$%^*7@()mail.com\",<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 404))
 
-    # def test_literals_string_5(self):
-    #     """STRING LITERALS #5 CASE#17"""
-    #     input = "\"duchungho\b@$%^*7@()mail.com\""
-    #     expect = "\"duchungho\b@$%^*7@()mail.com\",<EOF>"
-    #     self.assertTrue(TestLexer.test(input, expect, 405))
+    def test_literals_string_5(self):
+        """STRING LITERALS #5 CASE#17"""
+        input = "\"duchungho\b@$%^*7@()ma\til.com\""
+        expect = "\"duchungho\b@$%^*7@()ma\til.com\",<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 405))
 
     def test_literals_string_6(self):
         """STRING LITERALS #6 CASE#18"""

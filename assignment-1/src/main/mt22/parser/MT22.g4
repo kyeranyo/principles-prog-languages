@@ -26,7 +26,7 @@ BOOLEAN_LIT: FALSE | TRUE;
 fragment FALSE: 'false';
 fragment TRUE: 'true';
 
-STRING_LIT: DUO_QUOTE (.~[\\]*? | Escape_Sequence*?) DUO_QUOTE;
+STRING_LIT: DUO_QUOTE (.~[\\]*?Escape_Sequence*?)? DUO_QUOTE;
 fragment Escape_Sequence:
 	BackSpace
 	| FormFeed
