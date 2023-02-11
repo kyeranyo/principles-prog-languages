@@ -1,3 +1,6 @@
-int a, b,c;
-    float foo(int a; float c, d) body
-    float goo (float a, b) body
+float goo (float a, b) {
+    foo(expr, expr, expr);
+    return expr;
+}
+
+c = expr;
