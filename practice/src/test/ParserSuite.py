@@ -5,13 +5,10 @@ from TestUtils import TestParser
 class ParserSuite(unittest.TestCase):
     def testcase_1(self):
         """TEST SIMPLE CASE"""
-        input = """float goo (float a, b) {
-    foo(expr, expr, expr);
-    return expr;
-}
-
-c = expr;"""
-        expect = "Error on line 6 col 0: c"
+        input ="""float goo (float a, b) {
+   return 1 - foo(1, a, b);
+}"""
+        expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 201))
 
 #     def testcase_2(self):

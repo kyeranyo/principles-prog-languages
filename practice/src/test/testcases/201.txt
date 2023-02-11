@@ -1,6 +1,3 @@
 float goo (float a, b) {
-    foo(expr, expr, expr);
-    return expr;
+   return 1 - foo(1, a, b);
 }
-
-c = expr;
