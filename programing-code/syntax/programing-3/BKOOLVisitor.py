@@ -34,13 +34,33 @@ class BKOOLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by BKOOLParser#paradecl.
-    def visitParadecl(self, ctx:BKOOLParser.ParadeclContext):
+    # Visit a parse tree produced by BKOOLParser#assign_stmt.
+    def visitAssign_stmt(self, ctx:BKOOLParser.Assign_stmtContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by BKOOLParser#paramlist.
-    def visitParamlist(self, ctx:BKOOLParser.ParamlistContext):
+    # Visit a parse tree produced by BKOOLParser#call_stmt.
+    def visitCall_stmt(self, ctx:BKOOLParser.Call_stmtContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BKOOLParser#return_stmt.
+    def visitReturn_stmt(self, ctx:BKOOLParser.Return_stmtContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BKOOLParser#param_call_stmt.
+    def visitParam_call_stmt(self, ctx:BKOOLParser.Param_call_stmtContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BKOOLParser#expr.
+    def visitExpr(self, ctx:BKOOLParser.ExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BKOOLParser#paramdecl.
+    def visitParamdecl(self, ctx:BKOOLParser.ParamdeclContext):
         return self.visitChildren(ctx)
 
 
@@ -49,13 +69,13 @@ class BKOOLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by BKOOLParser#idlist.
-    def visitIdlist(self, ctx:BKOOLParser.IdlistContext):
+    # Visit a parse tree produced by BKOOLParser#param.
+    def visitParam(self, ctx:BKOOLParser.ParamContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by BKOOLParser#body.
-    def visitBody(self, ctx:BKOOLParser.BodyContext):
+    # Visit a parse tree produced by BKOOLParser#idlist.
+    def visitIdlist(self, ctx:BKOOLParser.IdlistContext):
         return self.visitChildren(ctx)
 
 

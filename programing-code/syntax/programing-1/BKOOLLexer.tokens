@@ -1,0 +1,8 @@
+T__0=1
+T__1=2
+WS=3
+ERROR_CHAR=4
+UNCLOSE_STRING=5
+ILLEGAL_ESCAPE=6
+'funcdecl'=1
+'vardecl'=2
