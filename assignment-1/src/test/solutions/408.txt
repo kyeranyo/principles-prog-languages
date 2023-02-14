@@ -1,1 +1,1 @@
-"He asked me ",Error Token W
+"He asked me: \"Where is john\"",<EOF>

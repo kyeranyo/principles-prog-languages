@@ -4,8 +4,26 @@ from TestUtils import TestLexer
 
 class LexerSuite(unittest.TestCase):
 
+    def test_comment_1(self):
+        """COMMENT TEST #1 CASE #1"""
+        input = "/* A C-style comment */"
+        expect = "/* A C-style comment */,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 301))
+
+    def test_comment_2(self):
+        """COMMENT TEST #1 CASE #1"""
+        input = "// A C++ style comment"
+        expect = "// A C++ style comment,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 302))
+
+    # def test_comment_3(self):
+    #     """COMMENT TEST #1 CASE #1"""
+    #     input = "/*aabbcsda\naaw*/"
+    #     expect = "/*aabbcsda\naaw*/,<EOF>"
+    #     self.assertTrue(TestLexer.test(input, expect, 303))
+
     def test_literals_integer_1(self):
-        """INTEGER LITERALS #1 CASE#1"""
+        """INTEGER LITERALS #1 CASE#2"""
         input = "1_72"
         expect = "172,<EOF>"
         self.assertTrue(TestLexer.test(input, expect, 101))
@@ -120,8 +138,8 @@ class LexerSuite(unittest.TestCase):
 
     def test_literals_string_8(self):
         """STRING LITERALS #8 CASE#20"""
-        input = "\"He asked me \"Where is John\"\""
-        expect = "\"He asked me \",Error Token W"
+        input = """"He asked me: \\"Where is john\\"" """
+        expect = """"He asked me: \\"Where is john\\"",<EOF>"""
         self.assertTrue(TestLexer.test(input, expect, 408))
 
     def test_literals_string_9(self):
@@ -135,3 +153,9 @@ class LexerSuite(unittest.TestCase):
         input = "\"\""
         expect = "\"\",<EOF>"
         self.assertTrue(TestLexer.test(input, expect, 410))
+
+    def test_literals_array_1(self):
+        """ARRAY LITERALS #1 CASE#23"""
+        input = "{1, 5, 7, 12}"
+        expect = "{1, 5, 7, 12},<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 501))

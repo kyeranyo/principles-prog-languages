@@ -10,6 +10,12 @@ options {
 
 program: EOF;
 
+COMMENT: SingleLineComment | MultiLineComment;
+fragment SingleLineComment: '//' ~('\r' | '\n')*;
+fragment MultiLineComment: '/*' .*? '*/';
+fragment IDENTIFIER: [a-zA-Z_]+ [a-zA-Z0-9_]*;
+fragment NUMBER: [0-9]+;
+
 INTEGER_LIT:
 	'0'
 	| [1-9][0-9]* (UNDERSCORE [0-9]+)* {self.text = self.text.replace("_","")};
@@ -26,14 +32,17 @@ BOOLEAN_LIT: FALSE | TRUE;
 fragment FALSE: 'false';
 fragment TRUE: 'true';
 
-STRING_LIT: DUO_QUOTE (.~[\\]*?Escape_Sequence*?)? DUO_QUOTE;
+STRING_LIT: DUO_QUOTE (~[\\"] | SubString)*? DUO_QUOTE;
+fragment SubString: '\\"' ~["]*? '\\"';
+
 fragment Escape_Sequence:
 	BackSpace
 	| FormFeed
 	| CarriageReturn
 	| NewLine
 	| SingleQuote
-	;
+	| Dou_quote
+	| BackSlash;
 fragment DUO_QUOTE: ["];
 fragment SINGLE_QUOTE: ['];
 fragment BackSpace: [\b];
@@ -42,6 +51,10 @@ fragment CarriageReturn: [\r];
 fragment NewLine: [\n];
 fragment SingleQuote: '\'';
 fragment BackSlash: [\\];
+fragment Dou_quote: '\\"';
+
+ARRAY_LIT:
+	LCB ((NUMBER | IDENTIFIER) (COMMA (NUMBER | IDENTIFIER))*)? RCB;
 
 AUTO: 'auto';
 BREAK: 'break';
@@ -69,15 +82,15 @@ fragment MUL: '*';
 fragment DIV: '/';
 fragment MOD: '%';
 fragment NOT: '!';
-AND: '&&';
-OR: '||';
-EQUAL_TO: '==';
-NOT_EQUAL: '!=';
-LESS: '<';
-GREATER: '>';
-LESS_THAN_OR_EQUAL: '<=';
-GREATER_THAN_OR_EQUAL: '>=';
-SCOPE_RES: '::';
+fragment AND: '&&';
+fragment OR: '||';
+fragment EQUAL_TO: '==';
+fragment NOT_EQUAL: '!=';
+fragment LESS: '<';
+fragment GREATER: '>';
+fragment LESS_THAN_OR_EQUAL: '<=';
+fragment GREATER_THAN_OR_EQUAL: '>=';
+fragment SCOPE_RES: '::';
 
 LB: '(';
 RB: ')';
