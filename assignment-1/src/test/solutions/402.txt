@@ -1,1 +1,1 @@
-"Hanoi",<EOF>
+Hanoi,<EOF>

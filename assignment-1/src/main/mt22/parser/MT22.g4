@@ -30,8 +30,16 @@ BOOLEAN_LIT: FALSE | TRUE;
 fragment FALSE: 'false';
 fragment TRUE: 'true';
 
-STRING_LIT: DUO_QUOTE (~[\\"] | SubString)*? DUO_QUOTE;
-fragment SubString: '\\"' ~["]*? '\\"';
+STRING_LIT:
+	DUO_QUOTE (~[\\"] | SUBSTRING)*? DUO_QUOTE {self.text=self.text[1:-1]};
+fragment SUBSTRING: '\\"' .*? '\\"';
+
+ARRAY_LIT: LCB EXPS? RCB;
+fragment EXPS: NUMLIST | STRINGLIST;
+fragment NUMLIST: NUMBER (COMMA NUMLIST)* | NUMBER;
+fragment STRINGLIST:
+	STRING_LIT (COMMA STRINGLIST)*
+	| STRING_LIT;
 
 fragment Escape_Sequence:
 	BackSpace
@@ -50,12 +58,6 @@ fragment NewLine: [\n];
 fragment SingleQuote: '\'';
 fragment BackSlash: [\\];
 fragment Dou_quote: '\\"';
-
-ARRAY_LIT:  StringList ;
-fragment EXPS: EXP |;
-fragment EXP: ELEMENT COMMA EXP | ELEMENT;
-fragment ELEMENT: NUMBER | STRING_LIT;
-StringList: STRING_LIT (',' STRING_LIT)*?;
 
 AUTO: 'auto';
 BREAK: 'break';
@@ -93,20 +95,20 @@ fragment LESS_THAN_OR_EQUAL: '<=';
 fragment GREATER_THAN_OR_EQUAL: '>=';
 fragment SCOPE_RES: '::';
 
+fragment PERIOD: '.';
+fragment COMMA: ',';
+fragment SEMI: ';';
+fragment EQUAL: '=';
+fragment COLON: ':';
 fragment LB: '(';
 fragment RB: ')';
 fragment LSB: '[';
 fragment RSB: ']';
 fragment LCB: '{';
 fragment RCB: '}';
-fragment PERIOD: '.';
-fragment COMMA: ',';
-fragment SEMI: ';';
-fragment EQUAL: '=';
-fragment COLON: ':';
 
-fragment IDENTIFIER: [a-zA-Z_]+ [a-zA-Z0-9_]*;
-fragment NUMBER: [0-9]+;
+IDENTIFIER: [a-zA-Z_]+ [a-zA-Z0-9_]*;
+NUMBER: [0-9]+;
 
 WS: [ \t\r\n]+ -> skip; // skip spaces, tabs, newlines
 
