@@ -13,8 +13,6 @@ program: EOF;
 COMMENT: SingleLineComment | MultiLineComment;
 fragment SingleLineComment: '//' ~('\r' | '\n')*;
 fragment MultiLineComment: '/*' .*? '*/';
-fragment IDENTIFIER: [a-zA-Z_]+ [a-zA-Z0-9_]*;
-fragment NUMBER: [0-9]+;
 
 INTEGER_LIT:
 	'0'
@@ -53,8 +51,11 @@ fragment SingleQuote: '\'';
 fragment BackSlash: [\\];
 fragment Dou_quote: '\\"';
 
-ARRAY_LIT:
-	LCB ((NUMBER | IDENTIFIER) (COMMA (NUMBER | IDENTIFIER))*)? RCB;
+ARRAY_LIT:  StringList ;
+fragment EXPS: EXP |;
+fragment EXP: ELEMENT COMMA EXP | ELEMENT;
+fragment ELEMENT: NUMBER | STRING_LIT;
+StringList: STRING_LIT (',' STRING_LIT)*?;
 
 AUTO: 'auto';
 BREAK: 'break';
@@ -92,17 +93,20 @@ fragment LESS_THAN_OR_EQUAL: '<=';
 fragment GREATER_THAN_OR_EQUAL: '>=';
 fragment SCOPE_RES: '::';
 
-LB: '(';
-RB: ')';
-LSB: '[';
-RSB: ']';
-LCB: '{';
-RCB: '}';
+fragment LB: '(';
+fragment RB: ')';
+fragment LSB: '[';
+fragment RSB: ']';
+fragment LCB: '{';
+fragment RCB: '}';
 fragment PERIOD: '.';
 fragment COMMA: ',';
 fragment SEMI: ';';
 fragment EQUAL: '=';
 fragment COLON: ':';
+
+fragment IDENTIFIER: [a-zA-Z_]+ [a-zA-Z0-9_]*;
+fragment NUMBER: [0-9]+;
 
 WS: [ \t\r\n]+ -> skip; // skip spaces, tabs, newlines
 

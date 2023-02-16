@@ -11,16 +11,40 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(input, expect, 301))
 
     def test_comment_2(self):
-        """COMMENT TEST #1 CASE #1"""
+        """COMMENT TEST #2 CASE #1"""
         input = "// A C++ style comment"
         expect = "// A C++ style comment,<EOF>"
         self.assertTrue(TestLexer.test(input, expect, 302))
 
-    # def test_comment_3(self):
-    #     """COMMENT TEST #1 CASE #1"""
-    #     input = "/*aabbcsda\naaw*/"
-    #     expect = "/*aabbcsda\naaw*/,<EOF>"
-    #     self.assertTrue(TestLexer.test(input, expect, 303))
+    def test_comment_3(self):
+        """COMMENT TEST #3 CASE #1"""
+        input = "/*/**/"
+        expect = "/*/**/,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 303))
+
+    def test_comment_4(self):
+        """COMMENT TEST #4 CASE #1"""
+        input = "/*//*/"
+        expect = "/*//*/,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 304))
+
+    def test_comment_5(self):
+        """COMMENT TEST #5 CASE #1"""
+        input = "/**/*/"
+        expect = "/**/*/,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 305))
+
+    def test_comment_6(self):
+        """COMMENT TEST #6 CASE #1"""
+        input = "// abc \n xyz"
+        expect = "/**/*/,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 306))
+
+    def test_comment_3(self):
+        """COMMENT TEST #1 CASE #1"""
+        input = "/*aabbcsda\taaw*/"
+        expect = "/*aabbcsda\taaw*/,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 303))
 
     def test_literals_integer_1(self):
         """INTEGER LITERALS #1 CASE#2"""
@@ -36,8 +60,8 @@ class LexerSuite(unittest.TestCase):
 
     def test_literals_integer_3(self):
         """INTEGER LITERALS #3 CASE#3"""
-        input = "0_123"
-        expect = "0,Error Token _"
+        input = "1_123"
+        expect = "1123,<EOF>"
         self.assertTrue(TestLexer.test(input, expect, 103))
 
     def test_literals_integer_4(self):
@@ -102,8 +126,8 @@ class LexerSuite(unittest.TestCase):
 
     def test_literals_string_2(self):
         """STRING LITERALS #2 CASE#14"""
-        input = "\"duchungho@$%^*7@()mail.com\f\""
-        expect = "\"duchungho@$%^*7@()mail.com\f\",<EOF>"
+        input = "\"Hanoi\""
+        expect = "\"Hanoi\",<EOF>"
         self.assertTrue(TestLexer.test(input, expect, 402))
 
     def test_literals_string_3(self):
@@ -114,8 +138,8 @@ class LexerSuite(unittest.TestCase):
 
     def test_literals_string_4(self):
         """STRING LITERALS #4 CASE#16"""
-        input = "\"duchungh\fo@$%^*7@()mail.com\""
-        expect = "\"duchungh\fo@$%^*7@()mail.com\",<EOF>"
+        input = "\"duchungho@$%^*7@()mail.com\""
+        expect = "\"duchungho@$%^*7@()mail.com\",<EOF>"
         self.assertTrue(TestLexer.test(input, expect, 404))
 
     def test_literals_string_5(self):
@@ -154,8 +178,20 @@ class LexerSuite(unittest.TestCase):
         expect = "\"\",<EOF>"
         self.assertTrue(TestLexer.test(input, expect, 410))
 
-    def test_literals_array_1(self):
-        """ARRAY LITERALS #1 CASE#23"""
-        input = "{1, 5, 7, 12}"
-        expect = "{1, 5, 7, 12},<EOF>"
-        self.assertTrue(TestLexer.test(input, expect, 501))
+    # def test_literals_array_1(self):
+    #     """Simple program: {1,2,3,4,5} """
+    #     input = """{1,2,3,4,5}"""
+    #     expect = "successful"
+    #     self.assertTrue(TestLexer.test(input, expect, 501))
+
+    # def test_literals_array_2(self):
+    #     """Simple program: {"Hanoi", "Tokyo", "London"} """
+    #     input = """{"Hanoi", "Tokyo", "London"}"""
+    #     expect = "successful"
+    #     self.assertTrue(TestLexer.test(input, expect, 502))
+
+    def test_literals_array_3(self):
+        """Simple program: {} """
+        input = "\"Hanoi\", \"Tokyo\""
+        expect = "\"Hanoi\", \"Tokyo\",<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 503))

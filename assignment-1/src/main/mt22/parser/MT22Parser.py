@@ -11,7 +11,7 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3$")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3 ")
         buf.write("\7\4\2\t\2\3\2\3\2\3\2\2\2\3\2\2\2\2\5\2\4\3\2\2\2\4\5")
         buf.write("\7\2\2\3\5\3\3\2\2\2\2")
         return buf.getvalue()
@@ -28,19 +28,18 @@ class MT22Parser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "'auto'", "'break'", "'integer'", 
-                     "'void'", "'array'", "'float'", "'return'", "'out'", 
-                     "'boolean'", "'for'", "'string'", "'continue'", "'do'", 
-                     "'function'", "'of'", "'else'", "'if'", "'while'", 
-                     "'inherit'", "'('", "')'", "'['", "']'", "'{'", "'}'" ]
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "'auto'", "'break'", "'integer'", "'void'", "'array'", 
+                     "'float'", "'return'", "'out'", "'boolean'", "'for'", 
+                     "'string'", "'continue'", "'do'", "'function'", "'of'", 
+                     "'else'", "'if'", "'while'", "'inherit'" ]
 
     symbolicNames = [ "<INVALID>", "COMMENT", "INTEGER_LIT", "FLOAT_LIT", 
-                      "BOOLEAN_LIT", "STRING_LIT", "AUTO", "BREAK", "INTEGER", 
-                      "VOID", "ARRAY", "FLOAT", "RETURN", "OUT", "BOOLEAN", 
-                      "FOR", "STRING", "CONTINUE", "DO", "FUNCTION", "OF", 
-                      "ELSE", "IF", "WHILE", "INHERIT", "LB", "RB", "LSB", 
-                      "RSB", "LCB", "RCB", "WS", "ERROR_CHAR", "UNCLOSE_STRING", 
-                      "ILLEGAL_ESCAPE" ]
+                      "BOOLEAN_LIT", "STRING_LIT", "ARRAY_LIT", "StringList", 
+                      "AUTO", "BREAK", "INTEGER", "VOID", "ARRAY", "FLOAT", 
+                      "RETURN", "OUT", "BOOLEAN", "FOR", "STRING", "CONTINUE", 
+                      "DO", "FUNCTION", "OF", "ELSE", "IF", "WHILE", "INHERIT", 
+                      "WS", "ERROR_CHAR", "UNCLOSE_STRING", "ILLEGAL_ESCAPE" ]
 
     RULE_program = 0
 
@@ -52,35 +51,31 @@ class MT22Parser ( Parser ):
     FLOAT_LIT=3
     BOOLEAN_LIT=4
     STRING_LIT=5
-    AUTO=6
-    BREAK=7
-    INTEGER=8
-    VOID=9
-    ARRAY=10
-    FLOAT=11
-    RETURN=12
-    OUT=13
-    BOOLEAN=14
-    FOR=15
-    STRING=16
-    CONTINUE=17
-    DO=18
-    FUNCTION=19
-    OF=20
-    ELSE=21
-    IF=22
-    WHILE=23
-    INHERIT=24
-    LB=25
-    RB=26
-    LSB=27
-    RSB=28
-    LCB=29
-    RCB=30
-    WS=31
-    ERROR_CHAR=32
-    UNCLOSE_STRING=33
-    ILLEGAL_ESCAPE=34
+    ARRAY_LIT=6
+    StringList=7
+    AUTO=8
+    BREAK=9
+    INTEGER=10
+    VOID=11
+    ARRAY=12
+    FLOAT=13
+    RETURN=14
+    OUT=15
+    BOOLEAN=16
+    FOR=17
+    STRING=18
+    CONTINUE=19
+    DO=20
+    FUNCTION=21
+    OF=22
+    ELSE=23
+    IF=24
+    WHILE=25
+    INHERIT=26
+    WS=27
+    ERROR_CHAR=28
+    UNCLOSE_STRING=29
+    ILLEGAL_ESCAPE=30
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)

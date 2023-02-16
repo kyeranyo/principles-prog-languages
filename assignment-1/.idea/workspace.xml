@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="011e201c-75b6-4057-9a56-9921767e8fe1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22Lexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22Lexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22Lexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22Lexer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22Lexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22Lexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22Parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22Parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22Parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22Parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/LexerSuite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/LexerSuite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/MT22.interp" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/MT22.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/MT22Lexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22Lexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/MT22Lexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22Lexer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/MT22Lexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22Lexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/MT22Parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22Parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOL.interp" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOL.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOL.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOL.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOLLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOLLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOLLexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOLLexer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOLLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOLLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOLParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOLParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOL.g4" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOL.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOL.interp" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOL.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOL.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOL.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOLLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOLLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOLLexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOLLexer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOLLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOLLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOLParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOLParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOLVisitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/BKOOLVisitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/test/LexerSuite.py" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/test/LexerSuite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/test/solutions/301.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/test/solutions/301.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/test/solutions/302.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/test/solutions/302.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/test/solutions/501.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/test/solutions/501.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/test/testcases/301.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/test/testcases/301.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/test/testcases/302.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/test/testcases/302.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/src/test/testcases/501.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/test/testcases/501.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/target/BKOOL.interp" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/target/BKOOL.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/target/BKOOL.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/target/BKOOL.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/target/BKOOLLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/target/BKOOLLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/target/BKOOLLexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/target/BKOOLLexer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/target/BKOOLLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/target/BKOOLLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/target/BKOOLParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/target/BKOOLParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/target/BKOOLVisitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/target/BKOOLVisitor.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2Ll7Mf7BS9mgOUU9bzPmpxZkViY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/84865/Documents/BK-CSE20/CSE-PPL/assignment-1",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Python tests for LexerSuite.LexerSuite.test_literals_string_1" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="assignment-1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;LexerSuite.LexerSuite.test_literals_string_1&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests for LexerSuite.LexerSuite.test_literals_string_1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="011e201c-75b6-4057-9a56-9921767e8fe1" name="Changes" comment="" />
+      <created>1676433768192</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676433768192</updated>
+    </task>
+    <servers />
+  </component>
+</project>
