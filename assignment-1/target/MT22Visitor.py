@@ -14,5 +14,40 @@ class MT22Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by MT22Parser#decls.
+    def visitDecls(self, ctx:MT22Parser.DeclsContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#array_type.
+    def visitArray_type(self, ctx:MT22Parser.Array_typeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#variable_decl.
+    def visitVariable_decl(self, ctx:MT22Parser.Variable_declContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#identifier_list.
+    def visitIdentifier_list(self, ctx:MT22Parser.Identifier_listContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#expression_list.
+    def visitExpression_list(self, ctx:MT22Parser.Expression_listContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#element_type.
+    def visitElement_type(self, ctx:MT22Parser.Element_typeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#dimesion.
+    def visitDimesion(self, ctx:MT22Parser.DimesionContext):
+        return self.visitChildren(ctx)
+
+
 
 del MT22Parser

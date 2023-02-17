@@ -8,9 +8,11 @@ options {
 	language = Python3;
 }
 
-program: EOF;
+program: decls* EOF;
 
-COMMENT: SingleLineComment | MultiLineComment;
+decls: array_type | variable_decl;
+
+COMMENT: (SingleLineComment | MultiLineComment) -> skip;
 fragment SingleLineComment: '//' ~('\r' | '\n')*;
 fragment MultiLineComment: '/*' .*? '*/';
 
@@ -36,10 +38,6 @@ fragment SUBSTRING: '\\"' .*? '\\"';
 
 ARRAY_LIT: LCB EXPS? RCB;
 fragment EXPS: NUMLIST | STRINGLIST;
-fragment NUMLIST: NUMBER (COMMA NUMLIST)* | NUMBER;
-fragment STRINGLIST:
-	STRING_LIT (COMMA STRINGLIST)*
-	| STRING_LIT;
 
 fragment Escape_Sequence:
 	BackSpace
@@ -58,6 +56,17 @@ fragment NewLine: [\n];
 fragment SingleQuote: '\'';
 fragment BackSlash: [\\];
 fragment Dou_quote: '\\"';
+
+array_type: ARRAY LSB dimesion RSB OF element_type;
+variable_decl:
+	identifier_list COLON element_type (EQUAL expression_list)? SEMI;
+
+
+
+identifier_list: IDENTIFIER COMMA identifier_list | IDENTIFIER;
+expression_list: dimesion;
+element_type: INTEGER | FLOAT | BOOLEAN | STRING;
+dimesion: NUMLIST;
 
 AUTO: 'auto';
 BREAK: 'break';
@@ -79,39 +88,44 @@ IF: 'if';
 WHILE: 'while';
 INHERIT: 'inherit';
 
-fragment PLUS: '+';
-fragment MINUS: '-';
-fragment MUL: '*';
-fragment DIV: '/';
-fragment MOD: '%';
-fragment NOT: '!';
-fragment AND: '&&';
-fragment OR: '||';
-fragment EQUAL_TO: '==';
-fragment NOT_EQUAL: '!=';
-fragment LESS: '<';
-fragment GREATER: '>';
-fragment LESS_THAN_OR_EQUAL: '<=';
-fragment GREATER_THAN_OR_EQUAL: '>=';
-fragment SCOPE_RES: '::';
-
-fragment PERIOD: '.';
-fragment COMMA: ',';
-fragment SEMI: ';';
-fragment EQUAL: '=';
-fragment COLON: ':';
-fragment LB: '(';
-fragment RB: ')';
-fragment LSB: '[';
-fragment RSB: ']';
-fragment LCB: '{';
-fragment RCB: '}';
+PLUS: '+';
+MINUS: '-';
+MUL: '*';
+DIV: '/';
+MOD: '%';
+LESS: '<';
+GREATER: '>';
+LESS_THAN_OR_EQUAL: '<=';
+GREATER_THAN_OR_EQUAL: '>=';
+NOT: '!';
+AND: '&&';
+OR: '||';
+EQUAL_TO: '==';
+NOT_EQUAL: '!=';
 
 IDENTIFIER: [a-zA-Z_]+ [a-zA-Z0-9_]*;
-NUMBER: [0-9]+;
+NUMBER: INTEGER_LIT | FLOAT_LIT;
+
+SCOPE_RES: '::';
+PERIOD: '.';
+COMMA: ',';
+SEMI: ';';
+EQUAL: '=';
+COLON: ':';
+LB: '(';
+RB: ')';
+LSB: '[';
+RSB: ']';
+LCB: '{';
+RCB: '}';
+
+NUMLIST: (NUMBER COMMA NUMLIST) | NUMBER;
+STRINGLIST: (STRING_LIT COMMA STRINGLIST) | STRING_LIT;
 
 WS: [ \t\r\n]+ -> skip; // skip spaces, tabs, newlines
 
+UNCLOSE_STRING:
+	DUO_QUOTE (~[\\"] | SUBSTRING)*? {raise UncloseString(self.text)};
+ILLEGAL_ESCAPE:
+	(~[\\"] | SUBSTRING)*? DUO_QUOTE {raise IllegalEscape(self.text)};
 ERROR_CHAR: .{raise ErrorToken(self.text)};
-UNCLOSE_STRING: .;
-ILLEGAL_ESCAPE: .;
