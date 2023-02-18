@@ -31,7 +31,7 @@ class LexerSuite(unittest.TestCase):
     def test_comment_5(self):
         """COMMENT TEST #5 CASE #1"""
         input = "/**/*/"
-        expect = "*,/,<EOF>"
+        expect = "Error Token *"
         self.assertTrue(TestLexer.test(input, expect, 305))
 
     def test_comment_6(self):
