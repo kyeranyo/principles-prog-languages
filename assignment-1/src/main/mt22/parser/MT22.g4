@@ -10,20 +10,57 @@ options {
 
 program: decls+ EOF;
 
-decls: dimesion;
-dimesion: NUMBER ',' dimesion | NUMBER;
+decls: array_type | variable_decl | function_decl;
 
-array_type: 'array' '[' dimesion ']' 'of' element_type;
-element_type: 'integer' | 'float' | 'boolean' | 'string';
+// Array type
+array_type: ARRAY LSB dimesion RSB OF element_type;
 
-variable_decl:
-	identifier_list ';' element_type ('=' expression_list)? ';';
-identifier_list: IDENTIFIER ',' identifier_list | IDENTIFIER;
-expression_list: dimesion;
+element_type: INTEGER | FLOAT | BOOLEAN | STRING;
+dimesion: dimesion_type_int | dimesion_type_float;
+dimesion_type_int:
+	INTEGER_LIT COMMA dimesion_type_int
+	| INTEGER_LIT;
+dimesion_type_float:
+	FLOAT_LIT COMMA dimesion_type_float FLOAT_LIT;
+
+//Variables
+variable_decl: identifier_list COLON element_type equal_exp ';';
+
+equal_exp: (EQUAL expression_list) |;
+
+identifier_list: IDENTIFIER COMMA identifier_list | IDENTIFIER;
+expression_list: exp_list_type_int | exp_list_type_float;
+exp_list_type_int:
+	INTEGER_LIT COMMA exp_list_type_int
+	| INTEGER_LIT;
+exp_list_type_float:
+	FLOAT_LIT COMMA exp_list_type_float
+	| FLOAT_LIT;
+exp_list_type_string:
+	STRING_LIT COMMA exp_list_type_string
+	| STRING_LIT;
+
+//Parameters
+parameter: (INHERIT |) (OUT |) IDENTIFIER COLON element_type;
+
+// Function declarations
+function_decl:
+	IDENTIFIER COLON FUNCTION return_type LB paramter_list RB inheritance;
+inheritance: INHERIT function_name |;
+function_name: IDENTIFIER;
+
+paramter_list: paramter_list_term |;
+paramter_list_term:
+	parameter COMMA paramter_list_term
+	| parameter;
+
+return_type: INTEGER | FLOAT | BOOLEAN | STRING | VOID | AUTO;
 
 COMMENT: (SingleLineComment | MultiLineComment) -> skip;
 fragment SingleLineComment: '//' ~('\r' | '\n')*;
 fragment MultiLineComment: '/*' .*? '*/';
+
+// NUMBER: (INTEGER_LIT | FLOAT_LIT) {self.text = self.text.replace("_","")};
 
 INTEGER_LIT:
 	'0'
@@ -46,8 +83,9 @@ STRING_LIT:
 fragment SUBSTRING: '\\"' .*? '\\"';
 
 ARRAY_LIT: LCB EXPS? RCB;
-fragment EXPS: NUMLIST | STRINGLIST;
-fragment NUMLIST: (NUMBER COMMA NUMLIST) | NUMBER;
+fragment EXPS: INT_TYPE | FLOAT_TYPE | STRINGLIST;
+fragment INT_TYPE: (INTEGER_LIT COMMA INT_TYPE) | INTEGER_LIT;
+fragment FLOAT_TYPE: (FLOAT_LIT COMMA FLOAT_TYPE) | FLOAT_LIT;
 fragment STRINGLIST: (STRING_LIT COMMA STRINGLIST) | STRING_LIT;
 
 fragment Escape_Sequence:
@@ -68,31 +106,31 @@ fragment SingleQuote: '\'';
 fragment BackSlash: [\\];
 fragment Dou_quote: '\\"';
 
-// AUTO: 'auto';
-// BREAK: 'break';
-// INTEGER: 'integer';
-// VOID: 'void';
-// ARRAY: 'array';
-// FLOAT: 'float';
-// RETURN: 'return';
-// OUT: 'out';
-// BOOLEAN: 'boolean';
-// FOR: 'for';
-// STRING: 'string';
-// CONTINUE: 'continue';
-// DO: 'do';
-// FUNCTION: 'function';
-// OF: 'of';
-// ELSE: 'else';
-// IF: 'if';
-// WHILE: 'while';
-// INHERIT: 'inherit';
+AUTO: 'auto';
+BREAK: 'break';
+INTEGER: 'integer';
+VOID: 'void';
+ARRAY: 'array';
+FLOAT: 'float';
+RETURN: 'return';
+OUT: 'out';
+BOOLEAN: 'boolean';
+FOR: 'for';
+STRING: 'string';
+CONTINUE: 'continue';
+DO: 'do';
+FUNCTION: 'function';
+OF: 'of';
+ELSE: 'else';
+IF: 'if';
+WHILE: 'while';
+INHERIT: 'inherit';
 
-fragment PLUS: '+';
-fragment MINUS: '-';
-fragment MUL: '*';
-fragment DIV: '/';
-fragment MOD: '%';
+PLUS: '+';
+MINUS: '-';
+MUL: '*';
+DIV: '/';
+MOD: '%';
 fragment LESS: '<';
 fragment GREATER: '>';
 fragment LESS_THAN_OR_EQUAL: '<=';
@@ -104,20 +142,20 @@ fragment EQUAL_TO: '==';
 fragment NOT_EQUAL: '!=';
 
 fragment SCOPE_RES: '::';
-fragment PERIOD: '.';
-fragment COMMA: ',';
-fragment SEMI: ';';
-fragment EQUAL: '=';
-fragment COLON: ':';
-fragment LB: '(';
-fragment RB: ')';
-fragment LSB: '[';
-fragment RSB: ']';
-fragment LCB: '{';
-fragment RCB: '}';
+PERIOD: '.';
+COMMA: ',';
+SEMI: ';';
+EQUAL: '=';
+COLON: ':';
+LB: '(';
+RB: ')';
+LSB: '[';
+RSB: ']';
+LCB: '{';
+RCB: '}';
 
 IDENTIFIER: [a-zA-Z_]+ [a-zA-Z0-9_]*;
-NUMBER: INTEGER_LIT | FLOAT_LIT;
+
 WS: [ \t\r\n]+ -> skip; // skip spaces, tabs, newlines
 
 UNCLOSE_STRING:
