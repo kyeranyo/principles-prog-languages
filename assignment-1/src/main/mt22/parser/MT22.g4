@@ -56,6 +56,40 @@ paramter_list_term:
 
 return_type: INTEGER | FLOAT | BOOLEAN | STRING | VOID | AUTO;
 
+// expression declarations
+expression: expression_1 CONCAT expression_1 | expression_1;
+
+expression_1:
+	expression_2 (
+		EQUAL_TO
+		| NOT_EQUAL
+		| LESS
+		| GREATER
+		| LTE
+		| GTE
+	) expression_2
+	| expression_2;
+
+expression_2:
+	expression_2 (AND | OR) expression_3
+	| expression_3;
+
+expression_3:
+	expression_3 (PLUS | MINUS) expression_4
+	| expression_4;
+
+expression_4:
+	expression_4 (MUL | DIV | MOD) expression_5
+	| expression_5;
+
+expression_5: NOT expression_5 | expression_6;
+
+expression_6: MINUS expression_6 | expression_7;
+
+expression_7: IDENTIFIER LSB exp_list_type_int RSB | factor;
+
+factor: (INTEGER_LIT | FLOAT_LIT | STRING_LIT);
+
 COMMENT: (SingleLineComment | MultiLineComment) -> skip;
 fragment SingleLineComment: '//' ~('\r' | '\n')*;
 fragment MultiLineComment: '/*' .*? '*/';
@@ -131,17 +165,17 @@ MINUS: '-';
 MUL: '*';
 DIV: '/';
 MOD: '%';
-fragment LESS: '<';
-fragment GREATER: '>';
-fragment LESS_THAN_OR_EQUAL: '<=';
-fragment GREATER_THAN_OR_EQUAL: '>=';
-fragment NOT: '!';
-fragment AND: '&&';
-fragment OR: '||';
-fragment EQUAL_TO: '==';
-fragment NOT_EQUAL: '!=';
+LESS: '<';
+GREATER: '>';
+LTE: '<=';
+GTE: '>=';
+NOT: '!';
+AND: '&&';
+OR: '||';
+EQUAL_TO: '==';
+NOT_EQUAL: '!=';
 
-fragment SCOPE_RES: '::';
+CONCAT: '::';
 PERIOD: '.';
 COMMA: ',';
 SEMI: ';';

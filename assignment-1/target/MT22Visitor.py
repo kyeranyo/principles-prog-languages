@@ -114,5 +114,50 @@ class MT22Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by MT22Parser#expression.
+    def visitExpression(self, ctx:MT22Parser.ExpressionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#expression_1.
+    def visitExpression_1(self, ctx:MT22Parser.Expression_1Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#expression_2.
+    def visitExpression_2(self, ctx:MT22Parser.Expression_2Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#expression_3.
+    def visitExpression_3(self, ctx:MT22Parser.Expression_3Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#expression_4.
+    def visitExpression_4(self, ctx:MT22Parser.Expression_4Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#expression_5.
+    def visitExpression_5(self, ctx:MT22Parser.Expression_5Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#expression_6.
+    def visitExpression_6(self, ctx:MT22Parser.Expression_6Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#expression_7.
+    def visitExpression_7(self, ctx:MT22Parser.Expression_7Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#factor.
+    def visitFactor(self, ctx:MT22Parser.FactorContext):
+        return self.visitChildren(ctx)
+
+
 
 del MT22Parser
