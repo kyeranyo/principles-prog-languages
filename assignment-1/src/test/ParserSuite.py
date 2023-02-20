@@ -21,3 +21,9 @@ class ParserSuite(unittest.TestCase):
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 603))
 
+    def test_variable_program_4(self):
+        """n == 0"""
+        input = """n == !0;"""
+        expect = "successful"
+        self.assertTrue(TestParser.test(input, expect, 604))
+

@@ -10,7 +10,7 @@ options {
 
 program: decls+ EOF;
 
-decls: array_type | variable_decl | function_decl;
+decls: array_type | variable_decl | function_decl | assign_stmt;
 
 // Array type
 array_type: ARRAY LSB dimesion RSB OF element_type;
@@ -24,7 +24,15 @@ dimesion_type_float:
 	FLOAT_LIT COMMA dimesion_type_float FLOAT_LIT;
 
 //Variables
-variable_decl: identifier_list COLON element_type equal_exp ';';
+variable_decl:
+	identifier_list COLON element_type equal_exp ';' {
+txt = self._input.getText(localctx.start, localctx.stop);
+idx = txt.find(':')
+left = txt[:idx].count(',')
+right = txt[idx:].count(',')
+if(left != right):
+	raise RecognitionException()
+};
 
 equal_exp: (EQUAL expression_list) |;
 
@@ -86,9 +94,67 @@ expression_5: NOT expression_5 | expression_6;
 
 expression_6: MINUS expression_6 | expression_7;
 
-expression_7: IDENTIFIER LSB exp_list_type_int RSB | factor;
+expression_7: expression_7 factor | expression_8;
 
-factor: (INTEGER_LIT | FLOAT_LIT | STRING_LIT);
+expression_8: LB expression RB;
+
+factor: (INTEGER_LIT | FLOAT_LIT | STRING_LIT)
+	| IDENTIFIER LSB exp_list_type_int RSB;
+
+// statement
+statement:
+	assign_stmt
+	| if_stmt
+	| for_stmt
+	| while_stmt
+	| do_while_stmt
+	| block_stmt
+	| block_stmt
+	| return_stmt
+	| continue_stmt
+	| break_stmt;
+
+// assignment statement
+assign_stmt: lhs EQUAL expression SEMI;
+lhs: IDENTIFIER LSB exp_list_type_int RSB | IDENTIFIER;
+
+// if statement
+if_stmt: (IF expression statement ELSE statement)
+	| IF expression statement;
+
+// for statement
+for_stmt:
+	LB scala_val EQUAL init_expr COMMA condition_expr COMMA update_expr RB statement;
+scala_val: IDENTIFIER;
+init_expr: INTEGER_LIT | IDENTIFIER;
+condition_expr:
+	IDENTIFIER (
+		LESS
+		| GREATER
+		| LTE
+		| GTE
+		| NOT_EQUAL
+		| EQUAL_TO
+	) (IDENTIFIER | expression);
+update_expr: IDENTIFIER (PLUS | MINUS | MUL | MOD) expression;
+
+// while statement
+while_stmt: WHILE LB expression RB statement;
+
+// Do while statement
+do_while_stmt: DO block_stmt WHILE expression;
+
+// block statement
+block_stmt: LCB statement RCB;
+
+//break statement
+break_stmt: BREAK SEMI;
+
+// continue statement
+continue_stmt: CONTINUE SEMI;
+
+// return statement
+return_stmt: RETURN expression SEMI;
 
 COMMENT: (SingleLineComment | MultiLineComment) -> skip;
 fragment SingleLineComment: '//' ~('\r' | '\n')*;

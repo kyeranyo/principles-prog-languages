@@ -154,8 +154,58 @@ class MT22Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by MT22Parser#expression_8.
+    def visitExpression_8(self, ctx:MT22Parser.Expression_8Context):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by MT22Parser#factor.
     def visitFactor(self, ctx:MT22Parser.FactorContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#statement.
+    def visitStatement(self, ctx:MT22Parser.StatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#assign_stmt.
+    def visitAssign_stmt(self, ctx:MT22Parser.Assign_stmtContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#lhs.
+    def visitLhs(self, ctx:MT22Parser.LhsContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#if_stmt.
+    def visitIf_stmt(self, ctx:MT22Parser.If_stmtContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#for_stmt.
+    def visitFor_stmt(self, ctx:MT22Parser.For_stmtContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#scala_val.
+    def visitScala_val(self, ctx:MT22Parser.Scala_valContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#init_expr.
+    def visitInit_expr(self, ctx:MT22Parser.Init_exprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#condition_expr.
+    def visitCondition_expr(self, ctx:MT22Parser.Condition_exprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MT22Parser#update_expr.
+    def visitUpdate_expr(self, ctx:MT22Parser.Update_exprContext):
         return self.visitChildren(ctx)
 
 
