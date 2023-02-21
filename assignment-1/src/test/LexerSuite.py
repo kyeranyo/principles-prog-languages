@@ -162,7 +162,7 @@ class LexerSuite(unittest.TestCase):
 
     def test_literals_string_8(self):
         """STRING LITERALS #8 CASE#20"""
-        input = """"He asked me: \\"Where is john\\"" """
+        input = """ "He asked me: \\"Where is John?\\"" """
         expect = """He asked me: \\"Where is john\\",<EOF>"""
         self.assertTrue(TestLexer.test(input, expect, 408))
 

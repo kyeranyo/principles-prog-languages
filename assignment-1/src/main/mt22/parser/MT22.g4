@@ -4,15 +4,37 @@ grammar MT22;
 from lexererr import *
 }
 
+@parser::header {
+from antlr4.error.ErrorListener import ConsoleErrorListener, ErrorListener
+
+class NewErrorListener(ConsoleErrorListener):
+    INSTANCE = None
+
+    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
+	    return SyntaxException("Error on line " + str(line) +
+                              " col " + str(column) + ": " + offendingSymbol.text)
+
+NewErrorListener.INSTANCE = NewErrorListener()
+
+class SyntaxException(Exception):
+    def __init__(self, msg):
+        self.message = msg
+}
+
 options {
 	language = Python3;
 }
 
 program: decls+ EOF;
 
-decls: array_type | variable_decl | function_decl | assign_stmt;
+decls:
+	array_type
+	| variable_decl
+	| function_decl
+	| statement
+	| expression;
 
-// Array type
+// Array type -------------------------------------------------------------
 array_type: ARRAY LSB dimesion RSB OF element_type;
 
 element_type: INTEGER | FLOAT | BOOLEAN | STRING;
@@ -23,18 +45,17 @@ dimesion_type_int:
 dimesion_type_float:
 	FLOAT_LIT COMMA dimesion_type_float FLOAT_LIT;
 
-//Variables
+//Variables ---------------------------------------------------------------
 variable_decl:
-	identifier_list COLON element_type equal_exp ';' {
-txt = self._input.getText(localctx.start, localctx.stop);
-idx = txt.find(':')
-left = txt[:idx].count(',')
-right = txt[idx:].count(',')
-if(left != right):
-	raise RecognitionException()
+	identifier_list COLON element_type (
+		equal_exp
+		| equal_func_call
+	) {
+
 };
 
-equal_exp: (EQUAL expression_list) |;
+equal_exp: (EQUAL expression_list SEMI) | SEMI;
+equal_func_call: (EQUAL function_call SEMI) | SEMI;
 
 identifier_list: IDENTIFIER COMMA identifier_list | IDENTIFIER;
 expression_list: exp_list_type_int | exp_list_type_float;
@@ -48,23 +69,10 @@ exp_list_type_string:
 	STRING_LIT COMMA exp_list_type_string
 	| STRING_LIT;
 
-//Parameters
+//Parameters ----------------------------------------------------------------
 parameter: (INHERIT |) (OUT |) IDENTIFIER COLON element_type;
 
-// Function declarations
-function_decl:
-	IDENTIFIER COLON FUNCTION return_type LB paramter_list RB inheritance;
-inheritance: INHERIT function_name |;
-function_name: IDENTIFIER;
-
-paramter_list: paramter_list_term |;
-paramter_list_term:
-	parameter COMMA paramter_list_term
-	| parameter;
-
-return_type: INTEGER | FLOAT | BOOLEAN | STRING | VOID | AUTO;
-
-// expression declarations
+// expression declarations --------------------------------------------------
 expression: expression_1 CONCAT expression_1 | expression_1;
 
 expression_1:
@@ -96,12 +104,23 @@ expression_6: MINUS expression_6 | expression_7;
 
 expression_7: expression_7 factor | expression_8;
 
-expression_8: LB expression RB;
+expression_8: (LB expression RB) | factor;
 
-factor: (INTEGER_LIT | FLOAT_LIT | STRING_LIT)
+factor: (
+		INTEGER_LIT
+		| FLOAT_LIT
+		| STRING_LIT
+		| IDENTIFIER
+		| function_call
+	)
 	| IDENTIFIER LSB exp_list_type_int RSB;
 
-// statement
+// function call ------------------------------------------------------------
+function_call: IDENTIFIER LB exp_list RB;
+exps_list: exp_list |;
+exp_list: expression COMMA exp_list | expression;
+
+// statement ----------------------------------------------------------------
 statement:
 	assign_stmt
 	| if_stmt
@@ -109,20 +128,21 @@ statement:
 	| while_stmt
 	| do_while_stmt
 	| block_stmt
-	| block_stmt
 	| return_stmt
 	| continue_stmt
-	| break_stmt;
+	| break_stmt
+	| call_stmt
+	| variable_decl;
 
-// assignment statement
+// assignment statement ------------------------------------------------------
 assign_stmt: lhs EQUAL expression SEMI;
 lhs: IDENTIFIER LSB exp_list_type_int RSB | IDENTIFIER;
 
-// if statement
+// if statement --------------------------------------------------------------
 if_stmt: (IF expression statement ELSE statement)
 	| IF expression statement;
 
-// for statement
+// for statement -------------------------------------------------------------
 for_stmt:
 	LB scala_val EQUAL init_expr COMMA condition_expr COMMA update_expr RB statement;
 scala_val: IDENTIFIER;
@@ -138,24 +158,42 @@ condition_expr:
 	) (IDENTIFIER | expression);
 update_expr: IDENTIFIER (PLUS | MINUS | MUL | MOD) expression;
 
-// while statement
+// while statement ------------------------------------------------------------
 while_stmt: WHILE LB expression RB statement;
 
-// Do while statement
+// Do while statement ---------------------------------------------------------
 do_while_stmt: DO block_stmt WHILE expression;
 
-// block statement
-block_stmt: LCB statement RCB;
+// call statement -------------------------------------------------------------
+call_stmt: function_call SEMI;
 
-//break statement
+// block statement ------------------------------------------------------------
+block_stmt: (LCB statement* RCB) | '{}';
+// statement_list: statement statement_list | statement;
+
+//break statement -------------------------------------------------------------
 break_stmt: BREAK SEMI;
 
-// continue statement
+// continue statement ---------------------------------------------------------
 continue_stmt: CONTINUE SEMI;
 
-// return statement
+// return statement -----------------------------------------------------------
 return_stmt: RETURN expression SEMI;
 
+// Function declarations ------------------------------------------------------
+function_decl:
+	IDENTIFIER COLON FUNCTION return_type LB paramter_list RB inheritance statement;
+inheritance: INHERIT function_name |;
+function_name: IDENTIFIER;
+
+paramter_list: paramter_list_term |;
+paramter_list_term:
+	parameter COMMA paramter_list_term
+	| parameter;
+
+return_type: INTEGER | FLOAT | BOOLEAN | STRING | VOID | AUTO;
+
+/* --------------------------------------TOKEN------------------------------------------------------- */
 COMMENT: (SingleLineComment | MultiLineComment) -> skip;
 fragment SingleLineComment: '//' ~('\r' | '\n')*;
 fragment MultiLineComment: '/*' .*? '*/';
@@ -258,8 +296,8 @@ IDENTIFIER: [a-zA-Z_]+ [a-zA-Z0-9_]*;
 
 WS: [ \t\r\n]+ -> skip; // skip spaces, tabs, newlines
 
-UNCLOSE_STRING:
-	'"' (~[\\"] | SUBSTRING)*? {raise UncloseString(self.text)};
-ILLEGAL_ESCAPE:
-	(~[\\"] | SUBSTRING)*? '"' {raise IllegalEscape(self.text)};
 ERROR_CHAR: .{raise ErrorToken(self.text)};
+UNCLOSE_STRING: .;
+// '"' (~[\\"] | SUBSTRING)*? {raise UncloseString(self.text)};
+ILLEGAL_ESCAPE: .;
+// (~[\\"] | SUBSTRING)*? '"' {raise IllegalEscape(self.text)};

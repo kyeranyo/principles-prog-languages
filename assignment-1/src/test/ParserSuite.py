@@ -11,19 +11,41 @@ class ParserSuite(unittest.TestCase):
 
     def test_variable_program_2(self):
         """fact : function integer (n : integer)"""
-        input = """fact : function integer (n : integer)"""
+        input = """fact : function integer (n : integer) {}"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 602))
 
     def test_variable_program_3(self):
-        """x,y: string = "abc","xyz";"""
-        input = """x,y: integer = 65,66;"""
+        """a, b, c, d: integer = 3, 4, 6;"""
+        input = """a, b, c, d: integer = 3, 4, 6;"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 603))
 
     def test_variable_program_4(self):
-        """n == 0"""
-        input = """n == !0;"""
+        """x: integer = foo(65);"""
+        input = """delta: integer = fact(3);"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 604))
 
+    def test_function_program_5(self):
+        """main: function void () {}"""
+        input = """main: function void () {}"""
+        expect = "successful"
+        self.assertTrue(TestParser.test(input, expect, 605))
+
+    def test_function_program_6(self):
+        input ="""x: integer = 65;
+        fact: function integer (n: integer) {
+            if (n == 0) return 1;
+            else return n * fact(n - 1);
+        }
+        inc: function void(out n: integer, delta: integer) {
+            n = n + delta;
+        }
+        main: function void() {
+            delta: integer = fact(3);
+            inc(x, delta);
+            printInteger(x);
+        }"""
+        expect = "successful"
+        self.assertTrue(TestParser.test(input, expect, 606))
