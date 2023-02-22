@@ -3,12 +3,6 @@ from TestUtils import TestParser
 
 
 class ParserSuite(unittest.TestCase):
-    def test_array_program_2(self):
-        """Simple program: array [2,3] of integer """
-        input = """array [2] of integer"""
-        expect = "successful"
-        self.assertTrue(TestParser.test(input, expect, 601))
-
     def test_variable_program_2(self):
         """fact : function integer (n : integer)"""
         input = """fact : function integer (n : integer) {}"""
@@ -18,12 +12,12 @@ class ParserSuite(unittest.TestCase):
     def test_variable_program_3(self):
         """a, b, c, d: integer = 3, 4, 6;"""
         input = """a, b, c, d: integer = 3, 4, 6;"""
-        expect = "successful"
+        expect = "Error on line 1 col 29: ;"
         self.assertTrue(TestParser.test(input, expect, 603))
 
     def test_variable_program_4(self):
-        """x: integer = foo(65);"""
-        input = """delta: integer = fact(3);"""
+        """testcase: 604.txt"""
+        input = """delta: array [2] of integer = {};"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 604))
 
@@ -34,7 +28,8 @@ class ParserSuite(unittest.TestCase):
         self.assertTrue(TestParser.test(input, expect, 605))
 
     def test_function_program_6(self):
-        input ="""x: integer = 65;
+        input ="""
+        x: integer = 65;
         fact: function integer (n: integer) {
             if (n == 0) return 1;
             else return n * fact(n - 1);
@@ -46,6 +41,11 @@ class ParserSuite(unittest.TestCase):
             delta: integer = fact(3);
             inc(x, delta);
             printInteger(x);
+            r,s : integer;
+            r = 2.0;
+            a,b : array [5] of integer;
+            s = r * r * myPi;
+            a[0] = s;
         }"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 606))

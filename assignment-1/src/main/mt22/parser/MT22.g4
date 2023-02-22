@@ -27,17 +27,12 @@ options {
 
 program: decls+ EOF;
 
-decls:
-	array_type
-	| variable_decl
-	| function_decl
-	| statement
-	| expression;
+decls: variable_decl | function_decl;
 
 // Array type -------------------------------------------------------------
 array_type: ARRAY LSB dimesion RSB OF element_type;
 
-element_type: INTEGER | FLOAT | BOOLEAN | STRING;
+element_type: INTEGER | FLOAT | BOOLEAN | STRING | AUTO;
 dimesion: dimesion_type_int | dimesion_type_float;
 dimesion_type_int:
 	INTEGER_LIT COMMA dimesion_type_int
@@ -46,19 +41,60 @@ dimesion_type_float:
 	FLOAT_LIT COMMA dimesion_type_float FLOAT_LIT;
 
 //Variables ---------------------------------------------------------------
+/*
+ val_decl: listID COLON (TYPE | arr_decl) SEMI | var_init;
+ var_init:
+ ID (COMMA recursive_decl |
+ COLON (TYPE | arr_decl) ASSIGN) expr SEMI;
+ recursive_decl:
+ ID (COMMA recursive_decl | COLON
+ (TYPE
+ | arr_decl) ASSIGN) expr COMMA;
+ arr_decl: ARRAY LSB listInt RSB OF ELE_TYPE;
+ */
+
 variable_decl:
-	identifier_list COLON element_type (
-		equal_exp
-		| equal_func_call
-	) {
+	var_decl_no_eq
+	| var_decl_list
+	| var_decl_func
+	| var_decl_array;
 
-};
+var_decl_no_eq:
+	identifier_list COLON (element_type | array_type) SEMI;
 
-equal_exp: (EQUAL expression_list SEMI) | SEMI;
-equal_func_call: (EQUAL function_call SEMI) | SEMI;
+var_decl_list:
+	IDENTIFIER (
+		COMMA recursive_factor
+		| COLON element_type EQUAL
+	) expression SEMI;
+recursive_factor:
+	IDENTIFIER (
+		COMMA recursive_factor
+		| COLON element_type EQUAL
+	) expression COMMA;
+
+var_decl_func:
+	IDENTIFIER (COMMA recursive_func | COLON element_type EQUAL) function_call SEMI;
+recursive_func:
+	IDENTIFIER (COMMA recursive_func | COLON element_type EQUAL) function_call COMMA;
+
+var_decl_array:
+	IDENTIFIER (COMMA recursive_array | COLON array_type EQUAL) array_list SEMI;
+recursive_array:
+	IDENTIFIER (COMMA recursive_array | COLON array_type EQUAL) array_list COMMA;
+
+// var_decl_eq: var_decl_no_eq EQUAL array_list SEMI; equal_exp: (EQUAL expression_list SEMI) |
+// SEMI; equal_func_call: (EQUAL function_call SEMI) | SEMI; equal_array_type: (EQUAL array_list
+// SEMI) | SEMI;
+
+array_list: LCB (exp_list_term) RCB;
+exp_list_term: expression_list |;
 
 identifier_list: IDENTIFIER COMMA identifier_list | IDENTIFIER;
-expression_list: exp_list_type_int | exp_list_type_float;
+expression_list:
+	exp_list_type_int
+	| exp_list_type_float
+	| exp_list_type_string;
 exp_list_type_int:
 	INTEGER_LIT COMMA exp_list_type_int
 	| INTEGER_LIT;
@@ -112,6 +148,7 @@ factor: (
 		| STRING_LIT
 		| IDENTIFIER
 		| function_call
+		| ARRAY_LIT
 	)
 	| IDENTIFIER LSB exp_list_type_int RSB;
 
@@ -165,11 +202,12 @@ while_stmt: WHILE LB expression RB statement;
 do_while_stmt: DO block_stmt WHILE expression;
 
 // call statement -------------------------------------------------------------
-call_stmt: function_call SEMI;
+call_stmt: (function_call | s_func_decl) SEMI;
 
 // block statement ------------------------------------------------------------
-block_stmt: (LCB statement* RCB) | '{}';
-// statement_list: statement statement_list | statement;
+block_stmt: (LCB statement_term RCB);
+statement_term: statement_list |;
+statement_list: statement statement_list | statement;
 
 //break statement -------------------------------------------------------------
 break_stmt: BREAK SEMI;
@@ -192,6 +230,28 @@ paramter_list_term:
 	| parameter;
 
 return_type: INTEGER | FLOAT | BOOLEAN | STRING | VOID | AUTO;
+
+// Special Functions ------------------------------------------------------------
+s_func_decl:
+	read_integer
+	| print_integer
+	| read_float
+	| write_float
+	| print_boolean
+	| read_string
+	| print_string
+	| super_
+	| prevent_default;
+
+read_integer: 'readInteger' LB RB;
+print_integer: 'printInteger' LB (INTEGER_LIT | IDENTIFIER) RB;
+read_float: 'readFloat' LB RB;
+write_float: 'writeFloat' LB (FLOAT_LIT | IDENTIFIER) RB;
+print_boolean: 'printBoolean' LB (BOOLEAN_LIT | IDENTIFIER) RB;
+read_string: 'readString' LB RB;
+print_string: 'printString' LB (STRING_LIT | IDENTIFIER) RB;
+super_: 'super' LB expression_list RB;
+prevent_default: 'preventDefault' LB RB;
 
 /* --------------------------------------TOKEN------------------------------------------------------- */
 COMMENT: (SingleLineComment | MultiLineComment) -> skip;
@@ -220,8 +280,13 @@ STRING_LIT:
 	DUO_QUOTE (~[\\"] | SUBSTRING)*? DUO_QUOTE {self.text=self.text[1:-1]};
 fragment SUBSTRING: '\\"' .*? '\\"';
 
-ARRAY_LIT: LCB EXPS? RCB;
-fragment EXPS: INT_TYPE | FLOAT_TYPE | STRINGLIST;
+ARRAY_LIT:
+	ARRAY_LIT_INT
+	| ARRAY_LIT_FLOAT
+	| ARRAY_LIT_STRINGLIST;
+ARRAY_LIT_INT: LCB INT_TYPE RCB;
+ARRAY_LIT_FLOAT: LCB FLOAT_TYPE RCB;
+ARRAY_LIT_STRINGLIST: LCB STRINGLIST RCB;
 fragment INT_TYPE: (INTEGER_LIT COMMA INT_TYPE) | INTEGER_LIT;
 fragment FLOAT_TYPE: (FLOAT_LIT COMMA FLOAT_TYPE) | FLOAT_LIT;
 fragment STRINGLIST: (STRING_LIT COMMA STRINGLIST) | STRING_LIT;

@@ -1,1 +1,1 @@
-delta: integer = fact(3);
+delta: array [2] of integer = {};
