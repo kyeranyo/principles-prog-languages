@@ -1,0 +1,7 @@
+
+            /* main function */
+            main: function float () {
+                a = true && false;
+                print(abc);
+            }
+        

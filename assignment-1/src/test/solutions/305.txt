@@ -1,1 +1,1 @@
-*,/,<EOF>
+Illegal Escape In String: IEls fo my acb\t the dst \q

@@ -1,0 +1,5 @@
+
+        printf("bool: %s
+", bool ? "true" : "false");
+        printf("string: %s
+", string);

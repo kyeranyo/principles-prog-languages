@@ -1,1 +1,1 @@
-1234.567,<EOF>
+chuoi nay chua dong \\ abc',hello,Unclosed String:  

@@ -1,1 +1,1 @@
-7E-10,<EOF>
+chuoi nay,chua,dong,Error Token \

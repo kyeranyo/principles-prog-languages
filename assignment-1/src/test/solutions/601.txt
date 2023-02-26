@@ -1,1 +1,1 @@
-Error on line 1 col 0: array
+123.4,_56,<EOF>

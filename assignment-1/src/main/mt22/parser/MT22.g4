@@ -1,24 +1,13 @@
+/*
+ ID: 2013381
+ Author: Hồ Đức Hưng
+ Email: hung.hoduccse@hcmut.edu.vn
+ */
+
 grammar MT22;
 
 @lexer::header {
 from lexererr import *
-}
-
-@parser::header {
-from antlr4.error.ErrorListener import ConsoleErrorListener, ErrorListener
-
-class NewErrorListener(ConsoleErrorListener):
-    INSTANCE = None
-
-    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
-	    return SyntaxException("Error on line " + str(line) +
-                              " col " + str(column) + ": " + offendingSymbol.text)
-
-NewErrorListener.INSTANCE = NewErrorListener()
-
-class SyntaxException(Exception):
-    def __init__(self, msg):
-        self.message = msg
 }
 
 options {
@@ -41,47 +30,32 @@ dimesion_type_float:
 	FLOAT_LIT COMMA dimesion_type_float FLOAT_LIT;
 
 //Variables ---------------------------------------------------------------
-/*
- val_decl: listID COLON (TYPE | arr_decl) SEMI | var_init;
- var_init:
- ID (COMMA recursive_decl |
- COLON (TYPE | arr_decl) ASSIGN) expr SEMI;
- recursive_decl:
- ID (COMMA recursive_decl | COLON
- (TYPE
- | arr_decl) ASSIGN) expr COMMA;
- arr_decl: ARRAY LSB listInt RSB OF ELE_TYPE;
- */
 
-variable_decl:
-	var_decl_no_eq
-	| var_decl_list
-	| var_decl_func
-	| var_decl_array;
+variable_decl: var_decl_no_eq | var_decl_eq;
 
 var_decl_no_eq:
 	identifier_list COLON (element_type | array_type) SEMI;
-
-var_decl_list:
+var_decl_eq:
 	IDENTIFIER (
-		COMMA recursive_factor
-		| COLON element_type EQUAL
+		COMMA recursive
+		| COLON (element_type | array_type) EQUAL
 	) expression SEMI;
-recursive_factor:
+recursive:
 	IDENTIFIER (
-		COMMA recursive_factor
-		| COLON element_type EQUAL
+		COMMA recursive
+		| COLON (element_type | array_type) EQUAL
 	) expression COMMA;
 
-var_decl_func:
-	IDENTIFIER (COMMA recursive_func | COLON element_type EQUAL) function_call SEMI;
-recursive_func:
-	IDENTIFIER (COMMA recursive_func | COLON element_type EQUAL) function_call COMMA;
+// var_decl_list: IDENTIFIER ( COMMA recursive_factor | COLON element_type EQUAL ) expression SEMI;
+// recursive_factor: IDENTIFIER ( COMMA recursive_factor | COLON element_type EQUAL ) expression
+// COMMA;
 
-var_decl_array:
-	IDENTIFIER (COMMA recursive_array | COLON array_type EQUAL) array_list SEMI;
-recursive_array:
-	IDENTIFIER (COMMA recursive_array | COLON array_type EQUAL) array_list COMMA;
+//var_decl_func:
+// IDENTIFIER (COMMA recursive_func | COLON element_type EQUAL) function_call SEMI; recursive_func:
+// IDENTIFIER (COMMA recursive_func | COLON element_type EQUAL) function_call COMMA;
+// 
+// var_decl_array: IDENTIFIER (COMMA recursive_array | COLON array_type EQUAL) array_list SEMI;
+// recursive_array: IDENTIFIER (COMMA recursive_array | COLON array_type EQUAL) array_list COMMA;
 
 // var_decl_eq: var_decl_no_eq EQUAL array_list SEMI; equal_exp: (EQUAL expression_list SEMI) |
 // SEMI; equal_func_call: (EQUAL function_call SEMI) | SEMI; equal_array_type: (EQUAL array_list
@@ -91,10 +65,7 @@ array_list: LCB (exp_list_term) RCB;
 exp_list_term: expression_list |;
 
 identifier_list: IDENTIFIER COMMA identifier_list | IDENTIFIER;
-expression_list:
-	exp_list_type_int
-	| exp_list_type_float
-	| exp_list_type_string;
+expression_list: expression COMMA expression_list | expression;
 exp_list_type_int:
 	INTEGER_LIT COMMA exp_list_type_int
 	| INTEGER_LIT;
@@ -148,12 +119,13 @@ factor: (
 		| STRING_LIT
 		| IDENTIFIER
 		| function_call
-		| ARRAY_LIT
+		| array_list
+		| BOOLEAN_LIT
 	)
-	| IDENTIFIER LSB exp_list_type_int RSB;
+	| IDENTIFIER LSB (exp_list_type_int | factor | expression) RSB;
 
 // function call ------------------------------------------------------------
-function_call: IDENTIFIER LB exp_list RB;
+function_call: IDENTIFIER LB exps_list RB;
 exps_list: exp_list |;
 exp_list: expression COMMA exp_list | expression;
 
@@ -181,9 +153,11 @@ if_stmt: (IF expression statement ELSE statement)
 
 // for statement -------------------------------------------------------------
 for_stmt:
-	LB scala_val EQUAL init_expr COMMA condition_expr COMMA update_expr RB statement;
-scala_val: IDENTIFIER;
-init_expr: INTEGER_LIT | IDENTIFIER;
+	FOR LB (init_expr |) COMMA (condition_expr |) COMMA (
+		update_expr
+		|
+	) RB statement;
+init_expr: IDENTIFIER EQUAL expression;
 condition_expr:
 	IDENTIFIER (
 		LESS
@@ -193,13 +167,13 @@ condition_expr:
 		| NOT_EQUAL
 		| EQUAL_TO
 	) (IDENTIFIER | expression);
-update_expr: IDENTIFIER (PLUS | MINUS | MUL | MOD) expression;
+update_expr: IDENTIFIER EQUAL expression;
 
 // while statement ------------------------------------------------------------
 while_stmt: WHILE LB expression RB statement;
 
 // Do while statement ---------------------------------------------------------
-do_while_stmt: DO block_stmt WHILE expression;
+do_while_stmt: DO block_stmt WHILE expression SEMI;
 
 // call statement -------------------------------------------------------------
 call_stmt: (function_call | s_func_decl) SEMI;
@@ -216,7 +190,7 @@ break_stmt: BREAK SEMI;
 continue_stmt: CONTINUE SEMI;
 
 // return statement -----------------------------------------------------------
-return_stmt: RETURN expression SEMI;
+return_stmt: RETURN (expression |) SEMI;
 
 // Function declarations ------------------------------------------------------
 function_decl:
@@ -244,12 +218,16 @@ s_func_decl:
 	| prevent_default;
 
 read_integer: 'readInteger' LB RB;
-print_integer: 'printInteger' LB (INTEGER_LIT | IDENTIFIER) RB;
+print_integer:
+	'printInteger' LB (INTEGER_LIT | IDENTIFIER | expression) RB;
 read_float: 'readFloat' LB RB;
-write_float: 'writeFloat' LB (FLOAT_LIT | IDENTIFIER) RB;
-print_boolean: 'printBoolean' LB (BOOLEAN_LIT | IDENTIFIER) RB;
+write_float:
+	'writeFloat' LB (FLOAT_LIT | IDENTIFIER | expression) RB;
+print_boolean:
+	'printBoolean' LB (BOOLEAN_LIT | IDENTIFIER | expression) RB;
 read_string: 'readString' LB RB;
-print_string: 'printString' LB (STRING_LIT | IDENTIFIER) RB;
+print_string:
+	'printString' LB (STRING_LIT | IDENTIFIER | expression) RB;
 super_: 'super' LB expression_list RB;
 prevent_default: 'preventDefault' LB RB;
 
@@ -257,6 +235,7 @@ prevent_default: 'preventDefault' LB RB;
 COMMENT: (SingleLineComment | MultiLineComment) -> skip;
 fragment SingleLineComment: '//' ~('\r' | '\n')*;
 fragment MultiLineComment: '/*' .*? '*/';
+fragment CommentAll: '/*' .*? EOF;
 
 // NUMBER: (INTEGER_LIT | FLOAT_LIT) {self.text = self.text.replace("_","")};
 
@@ -266,48 +245,37 @@ INTEGER_LIT:
 
 fragment UNDERSCORE: '_';
 
-FLOAT_LIT:
-	EXPPART
-	| DECPART {self.text = self.text.replace("_","")};
-fragment DECPART: INTEGER_LIT PERIOD [0-9]+ ([eE] [0-9]*)?;
-fragment EXPPART: [0-9]+ [eE] MINUS [0-9]+;
+FLOAT_LIT: (
+		INTEGER_LIT DECPART EXPPART
+		| INTEGER_LIT DECPART
+		| INTEGER_LIT EXPPART
+		| DECPART EXPPART
+	) {self.text = self.text.replace("_","")};
+fragment DECPART: PERIOD [0-9]*;
+fragment EXPPART: [eE] [-+]? [0-9]+;
 
 BOOLEAN_LIT: FALSE | TRUE;
 fragment FALSE: 'false';
 fragment TRUE: 'true';
 
 STRING_LIT:
-	DUO_QUOTE (~[\\"] | SUBSTRING)*? DUO_QUOTE {self.text=self.text[1:-1]};
-fragment SUBSTRING: '\\"' .*? '\\"';
+	DUO_QUOTE (~[\\"] | SUBSTRING | Escape_Sequence)* DUO_QUOTE {self.text=str(self.text[1:-1])};
+fragment SUBSTRING:
+	'\\"' (~[\\"] | SUBSTRING | Escape_Sequence)*? '\\"';
 
-ARRAY_LIT:
-	ARRAY_LIT_INT
-	| ARRAY_LIT_FLOAT
-	| ARRAY_LIT_STRINGLIST;
-ARRAY_LIT_INT: LCB INT_TYPE RCB;
-ARRAY_LIT_FLOAT: LCB FLOAT_TYPE RCB;
-ARRAY_LIT_STRINGLIST: LCB STRINGLIST RCB;
-fragment INT_TYPE: (INTEGER_LIT COMMA INT_TYPE) | INTEGER_LIT;
-fragment FLOAT_TYPE: (FLOAT_LIT COMMA FLOAT_TYPE) | FLOAT_LIT;
-fragment STRINGLIST: (STRING_LIT COMMA STRINGLIST) | STRING_LIT;
+//ARRAY_LIT:
+// ARRAY_LIT_INT | ARRAY_LIT_FLOAT | ARRAY_LIT_STRINGLIST; ARRAY_LIT_INT: LCB INT_TYPE RCB;
+// ARRAY_LIT_FLOAT: LCB FLOAT_TYPE RCB; ARRAY_LIT_STRINGLIST: LCB STRINGLIST RCB; fragment INT_TYPE:
+// (INTEGER_LIT COMMA INT_TYPE) | INTEGER_LIT; fragment FLOAT_TYPE: (FLOAT_LIT COMMA FLOAT_TYPE) |
+// FLOAT_LIT; fragment STRINGLIST: (STRING_LIT COMMA STRINGLIST) | STRING_LIT;
 
+fragment Not_Escape_Sequence:
+	'\\' ~('b' | 'f' | 'n' | 'r' | 't' | '"' | '\'' | '\\');
 fragment Escape_Sequence:
-	BackSpace
-	| FormFeed
-	| CarriageReturn
-	| NewLine
-	| SingleQuote
-	| Dou_quote
-	| BackSlash;
+	'\\' ('b' | 'f' | 'n' | 'r' | 't' | '\'' | '\\' | '"');
+fragment AllEscSeq: '\\' ~["];
 fragment DUO_QUOTE: ["];
 fragment SINGLE_QUOTE: ['];
-fragment BackSpace: [\b];
-fragment FormFeed: [\f];
-fragment CarriageReturn: [\r];
-fragment NewLine: [\n];
-fragment SingleQuote: '\'';
-fragment BackSlash: [\\];
-fragment Dou_quote: '\\"';
 
 AUTO: 'auto';
 BREAK: 'break';
@@ -361,8 +329,9 @@ IDENTIFIER: [a-zA-Z_]+ [a-zA-Z0-9_]*;
 
 WS: [ \t\r\n]+ -> skip; // skip spaces, tabs, newlines
 
+UNCLOSE_STRING:
+	DUO_QUOTE (~["] | SUBSTRING)*? ([\r\n] | EOF) {raise UncloseString(self.text[1:])};
+ILLEGAL_ESCAPE:
+	DUO_QUOTE (~[\\"] | SUBSTRING | Escape_Sequence)* Not_Escape_Sequence {raise IllegalEscape(self.text[1:])
+		};
 ERROR_CHAR: .{raise ErrorToken(self.text)};
-UNCLOSE_STRING: .;
-// '"' (~[\\"] | SUBSTRING)*? {raise UncloseString(self.text)};
-ILLEGAL_ESCAPE: .;
-// (~[\\"] | SUBSTRING)*? '"' {raise IllegalEscape(self.text)};

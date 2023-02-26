@@ -1,0 +1,1 @@
+f,y : integer = foo(5+2-6*1), abc(6 == 6) ;

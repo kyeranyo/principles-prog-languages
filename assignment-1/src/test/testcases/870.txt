@@ -1,0 +1,13 @@
+
+            /* main function */
+            ac : float = 12.0e-10;
+            str : auto = "abc";
+            main: function float () {
+                a = true || false;
+                r,s : float;
+                r = 2.0;
+                s = r * r * myPi;
+                a[0] = s;
+
+            }
+        

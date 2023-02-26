@@ -1,0 +1,9 @@
+
+            /* main function */
+            main: function float () {
+                n = strlen(str);
+                for (i = 0, i < n / 2, i = i + 1) {
+                    swap(str[i], str[n - i - 1]);
+                }
+            }
+        

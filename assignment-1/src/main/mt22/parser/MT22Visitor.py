@@ -5,22 +5,6 @@ if __name__ is not None and "." in __name__:
 else:
     from MT22Parser import MT22Parser
 
-from antlr4.error.ErrorListener import ConsoleErrorListener, ErrorListener
-
-class NewErrorListener(ConsoleErrorListener):
-    INSTANCE = None
-
-    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
-	    return SyntaxException("Error on line " + str(line) +
-                              " col " + str(column) + ": " + offendingSymbol.text)
-
-NewErrorListener.INSTANCE = NewErrorListener()
-
-class SyntaxException(Exception):
-    def __init__(self, msg):
-        self.message = msg
-
-
 # This class defines a complete generic visitor for a parse tree produced by MT22Parser.
 
 class MT22Visitor(ParseTreeVisitor):
@@ -70,33 +54,13 @@ class MT22Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MT22Parser#var_decl_list.
-    def visitVar_decl_list(self, ctx:MT22Parser.Var_decl_listContext):
+    # Visit a parse tree produced by MT22Parser#var_decl_eq.
+    def visitVar_decl_eq(self, ctx:MT22Parser.Var_decl_eqContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MT22Parser#recursive_factor.
-    def visitRecursive_factor(self, ctx:MT22Parser.Recursive_factorContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MT22Parser#var_decl_func.
-    def visitVar_decl_func(self, ctx:MT22Parser.Var_decl_funcContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MT22Parser#recursive_func.
-    def visitRecursive_func(self, ctx:MT22Parser.Recursive_funcContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MT22Parser#var_decl_array.
-    def visitVar_decl_array(self, ctx:MT22Parser.Var_decl_arrayContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MT22Parser#recursive_array.
-    def visitRecursive_array(self, ctx:MT22Parser.Recursive_arrayContext):
+    # Visit a parse tree produced by MT22Parser#recursive.
+    def visitRecursive(self, ctx:MT22Parser.RecursiveContext):
         return self.visitChildren(ctx)
 
 
@@ -227,11 +191,6 @@ class MT22Visitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by MT22Parser#for_stmt.
     def visitFor_stmt(self, ctx:MT22Parser.For_stmtContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MT22Parser#scala_val.
-    def visitScala_val(self, ctx:MT22Parser.Scala_valContext):
         return self.visitChildren(ctx)
 
 

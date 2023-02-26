@@ -1,0 +1,7 @@
+
+             ABNCASDH : auto ;
+             main: function void(){
+                do {return 0;} while(b < 9);
+                for(i = 0 , i == 1-1, a = 294) return ;
+             }
+         

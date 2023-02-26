@@ -1,0 +1,6 @@
+
+            /* main function */
+            main: function float () {
+                a = "@#$&^@$(@(ahs\"ash\"%%@&@\"dsad\"123&^@@";
+            }
+        

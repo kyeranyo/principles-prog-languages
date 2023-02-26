@@ -1,0 +1,8 @@
+
+            /* main function */
+            ac : float = 12.0e-10;
+            str : auto = "abc";
+            main: function float () {
+                a = "don't get too close, it's dark inside" :: "it's where my demon hide";
+            }
+        

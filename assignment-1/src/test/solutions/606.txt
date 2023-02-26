@@ -1,1 +1,1 @@
-successful
+123.4E+56,<EOF>

@@ -1,0 +1,6 @@
+
+            /* main function */
+            main: function float () {
+                return 1 + 2 + {} - myPI * foo(a[a[0]] - 10 + swap());
+            }
+        

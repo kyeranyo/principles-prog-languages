@@ -1,0 +1,14 @@
+
+            var : string = "hello world";
+            sub : function boolean(var : string, delta : boolean) {
+                str = "wtf r u doing here !!!";
+            }
+            main: function void(){
+                do{
+                    return false;
+                }while(n == 0);
+                var = "Lau Dai Tinh Ai" :: var;
+                if n == 0 {}
+                else {}
+            }
+        

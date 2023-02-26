@@ -1,1 +1,1 @@
-/* A C-style comment */
+ "Day la chuoi chu \@ ki tu dac biet \@" 

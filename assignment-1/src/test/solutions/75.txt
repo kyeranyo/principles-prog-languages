@@ -1,0 +1,2 @@
+printf,(,bool: %s
+,,,bool,Error Token ?

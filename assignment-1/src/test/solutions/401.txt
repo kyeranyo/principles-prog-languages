@@ -1,1 +1,1 @@
-duchunghbo@$%^*7@()mail.com,<EOF>
+for,do,while,{,},factor,true,false,<EOF>

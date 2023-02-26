@@ -1,0 +1,2 @@
+ "Multi-line and escapes: 
+	"Hello, 'world'!"\nGoodbye." 
