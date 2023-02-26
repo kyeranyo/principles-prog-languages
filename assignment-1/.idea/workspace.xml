@@ -5,104 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="011e201c-75b6-4057-9a56-9921767e8fe1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../programing-code/ast/ex1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../programing-code/ast/ex2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22Lexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22Lexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22Lexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22Lexer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22Parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/.antlr/MT22Parser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22.tokens" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.interp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22Parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22Parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22Visitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22Visitor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/LexerSuite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/LexerSuite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ParserSuite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ParserSuite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/101.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/101.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/solutions/102.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/102.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/103.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/103.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/104.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/104.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/105.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/105.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/201.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/201.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/202.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/202.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/203.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/203.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/204.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/204.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/205.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/205.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/solutions/206.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/206.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/solutions/207.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/207.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/301.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/301.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/302.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/302.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/303.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/303.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/304.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/304.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/305.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/305.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/306.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/306.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/307.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/307.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/401.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/401.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/402.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/402.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/403.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/404.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/405.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/406.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/407.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/408.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/409.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/410.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/501.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/501.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/502.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/502.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/601.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/601.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/602.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/602.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/603.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/603.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/604.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/604.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/605.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/605.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/606.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/606.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/101.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/101.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/208.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/208.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/209.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/209.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/testcases/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/testcases/102.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/102.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/103.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/103.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/104.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/104.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/105.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/105.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/201.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/201.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/202.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/202.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/203.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/203.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/204.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/204.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/205.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/205.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/testcases/206.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/206.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/testcases/207.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/207.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/301.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/301.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/302.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/302.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/303.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/303.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/304.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/304.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/305.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/305.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/306.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/306.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/307.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/307.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/401.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/401.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/402.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/402.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/403.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/404.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/405.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/406.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/407.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/408.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/409.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/410.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/501.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/501.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/502.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/502.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/601.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/601.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/602.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/602.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/603.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/603.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/604.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/604.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/605.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/605.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/606.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/606.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/MT22.interp" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/MT22.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/testcases/208.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/208.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/testcases/209.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/209.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/MT22Lexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22Lexer.interp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/MT22Lexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22Lexer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/MT22Lexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22Lexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/MT22Parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22Parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/MT22Visitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22Visitor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOL.interp" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOL.interp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOL.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOL.tokens" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOLLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOLLexer.interp" afterDir="false" />
@@ -137,6 +58,8 @@
       <change beforePath="$PROJECT_DIR$/../practice/target/BKOOLLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/target/BKOOLLexer.tokens" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../practice/target/BKOOLParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/target/BKOOLParser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../practice/target/BKOOLVisitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/target/BKOOLVisitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../programing-code/ast/ex1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../programing-code/ast/ex1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../programing-code/ast/ex2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../programing-code/ast/ex2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../programing-code/opp_func/ex15.py" beforeDir="false" afterPath="$PROJECT_DIR$/../programing-code/opp_func/ex15.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../programing-code/opp_func/ex16.py" beforeDir="false" afterPath="$PROJECT_DIR$/../programing-code/opp_func/ex16.py" afterDir="false" />
     </list>
@@ -225,7 +148,8 @@
       <workItem from="1677286720653" duration="25000" />
       <workItem from="1677314103100" duration="7138000" />
       <workItem from="1677333218523" duration="9709000" />
-      <workItem from="1677379014604" duration="7150000" />
+      <workItem from="1677379014604" duration="7935000" />
+      <workItem from="1677407124261" duration="3229000" />
     </task>
     <servers />
   </component>

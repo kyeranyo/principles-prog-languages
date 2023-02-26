@@ -259,9 +259,9 @@ fragment FALSE: 'false';
 fragment TRUE: 'true';
 
 STRING_LIT:
-	DUO_QUOTE (~[\\"] | SUBSTRING | Escape_Sequence)* DUO_QUOTE {self.text=str(self.text[1:-1])};
+	DUO_QUOTE (~[\n\\"] | SUBSTRING | Escape_Sequence)* DUO_QUOTE {self.text=str(self.text[1:-1])};
 fragment SUBSTRING:
-	'\\"' (~[\\"] | SUBSTRING | Escape_Sequence)*? '\\"';
+	'\\"' (~[\n\\"] | SUBSTRING | Escape_Sequence)*? '\\"';
 
 //ARRAY_LIT:
 // ARRAY_LIT_INT | ARRAY_LIT_FLOAT | ARRAY_LIT_STRINGLIST; ARRAY_LIT_INT: LCB INT_TYPE RCB;
@@ -329,8 +329,13 @@ IDENTIFIER: [a-zA-Z_]+ [a-zA-Z0-9_]*;
 
 WS: [ \t\r\n]+ -> skip; // skip spaces, tabs, newlines
 
-UNCLOSE_STRING:
-	DUO_QUOTE (~["] | SUBSTRING)*? ([\r\n] | EOF) {raise UncloseString(self.text[1:])};
+UNCLOSE_STRING: DUO_QUOTE (~["] | SUBSTRING | Escape_Sequence)*? ([\r\n] | EOF)
+{
+s = self.text
+if s[len(s) - 1] == '\n' or s[len(s) - 1] == '\r':
+    raise UncloseString(self.text[1:-1])
+raise UncloseString(self.text[1:])
+};
 ILLEGAL_ESCAPE:
 	DUO_QUOTE (~[\\"] | SUBSTRING | Escape_Sequence)* Not_Escape_Sequence {raise IllegalEscape(self.text[1:])
 		};

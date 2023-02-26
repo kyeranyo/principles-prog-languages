@@ -10,8 +10,8 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(input, expect, 101))
 
     def test_string_2(self):
-        input = """ "Nguoi co don cho doi em" """
-        expect = """Nguoi co don cho doi em,<EOF>"""
+        input = """ "Nguoi co don cho doi em\n" """
+        expect = """Unclosed String: Nguoi co don cho doi em"""
         self.assertTrue(TestLexer.test(input, expect, 102))
 
     def test_string_3(self):
@@ -81,23 +81,23 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(input, expect, 205))
 
     def test_string_unclose_6(self):
-        input = """ "Ho Duc Hung \\"BKHCM \\" """
-        expect = """Unclosed String: Ho Duc Hung \\"BKHCM \\" """
+        input = """ "Ho Duc\n Hung" """
+        expect = """Unclosed String: Ho Duc"""""
         self.assertTrue(TestLexer.test(input, expect, 206))
 
     def test_string_unclose_7(self):
-        input = """ "Ho Duc Hung \\"BKHCM \\"\n"""
-        expect = """Unclosed String: Ho Duc Hung \\"BKHCM \\"\n"""
+        input = """ "Ho Duc Hung \n" """
+        expect ="""Unclosed String: Ho Duc Hung """
         self.assertTrue(TestLexer.test(input, expect, 207))
 
     def test_string_unclose_8(self):
-        input = """ "Ho Duc Hung \\"BKHCM \\"\n abc"""
-        expect = """Unclosed String: Ho Duc Hung \\"BKHCM \\"\n"""
+        input = """ "Ho Duc Hung \n abc"""
+        expect = """Unclosed String: Ho Duc Hung """
         self.assertTrue(TestLexer.test(input, expect, 208))
 
     def test_string_unclose_9(self):
-        input = """ "Ho Duc Hung \\"BKHCM \\"\n hungdeptraivippro"""
-        expect = """Unclosed String: Ho Duc Hung \\"BKHCM \\"\n"""
+        input = """ "Ho Duc Hung \n hungdeptraivippro" """
+        expect = """Unclosed String: Ho Duc Hung """
         self.assertTrue(TestLexer.test(input, expect, 209))
     #  ---------- Illegal Escape In String -------------
 
