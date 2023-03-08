@@ -1,0 +1,8 @@
+
+            /* main function */
+            ac : float = 12.0e-10;
+            main: function float () {
+                /* anh muon ta ve cung mot nha, an sang va cung hat ca */ // nhung biet sao gio 
+                a = true || false;
+            }
+        

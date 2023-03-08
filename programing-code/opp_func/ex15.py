@@ -36,9 +36,10 @@ class Eval:
             elif x.op == '/':
                 return left / right
         elif type(x) == UnExp:
-            return 0 - self.visit(x.operand)
-
-
+            if x.op == '-':
+                return -self.visit(x.operand)
+            else:
+                return self.visit(x.operand)
 class PrintPrefix:
     def visit(self, x):
         if type(x) == IntLit:
@@ -57,8 +58,6 @@ class PrintPrefix:
         elif type(x) == UnExp:
             if x.op == '-':
                 return x.op + "." + " " + self.visit(x.operand)
-            elif x.op == '/':
-                return "." + x.op + " " + self.visit(x.operand)
             else:
                 return x.op + " " + self.visit(x.operand)
 class PrintPostfix: pass

@@ -1,2 +1,1 @@
-x, y, z: integer = 1, 2, 3;
-        a, b: float;
+ "product by \t yes \i 1c4n hcmut" 

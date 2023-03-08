@@ -1,0 +1,8 @@
+
+            /* main function */
+            main: function float () {
+                n = 10 + 132 * x / 10 == 0 + cn;
+                for (i = 0 , i > n , i = i + 1) break;
+                while(n && a) continue;
+            }
+        

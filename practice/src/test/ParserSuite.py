@@ -3,13 +3,11 @@ from TestUtils import TestParser
 
 
 class ParserSuite(unittest.TestCase):
-    def testcase_1(self):
-        """TEST SIMPLE CASE"""
-        input ="""float goo (float a, b) {
-   return 1 - foo(1, a, b);
-}"""
+    def test_array_program_2(self):
+        """Simple program: array [2,3] of integer """
+        input = """array [2,4,5,6,7] of integer"""
         expect = "successful"
-        self.assertTrue(TestParser.test(input, expect, 201))
+        self.assertTrue(TestParser.test(input, expect, 101))
 
 #     def testcase_2(self):
 #         """int a, b,;"""

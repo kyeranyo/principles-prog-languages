@@ -1,0 +1,8 @@
+
+            /* main function */
+            factor : integer = 10.0;
+            main: function float () {
+                a = true || false;
+                foo(123 +13 -1 + foo(5));
+            }
+        

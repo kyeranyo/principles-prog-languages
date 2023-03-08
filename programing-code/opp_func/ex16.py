@@ -25,10 +25,11 @@ class FloatLit(Exp):
         return v.visitFloatLit(self)
 
 
-class Eval:
-    def visit(self,x):
-        return x.accept(self)
+class Visitor:
+    def visit(self, ctx):
+        return ctx.accept(self)
 
+class Eval(Visitor):
     def visitIntLit(self, int):
         return int.value
 
@@ -47,11 +48,12 @@ class Eval:
             return left / right
 
     def visitUnExp(self, u):
-        return 0 - self.visit(u.operand)
+        if u.op == '-':
+            return -self.visit(u.operand)
+        else:
+            return self.visit(u.operand)
 
-class PrintPrefix:
-    def visit(self, x):
-        return x.accept(self)
+class PrintPrefix(Visitor):
     def visitIntLit(self, i):
         return str(i.value)
     def visitFloatLit(self, f):

@@ -6,24 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="011e201c-75b6-4057-9a56-9921767e8fe1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mt22/parser/MT22Lexer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/LexerSuite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/LexerSuite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/102.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/102.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/206.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/206.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/207.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/207.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/208.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/208.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/209.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/209.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/102.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/102.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/206.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/206.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/207.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/207.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/208.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/208.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/209.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/209.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/MT22Lexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22Lexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/MT22Lexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/target/MT22Lexer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOL.interp" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOL.interp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOL.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOL.tokens" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOLLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/src/main/bkool/parser/.antlr/BKOOLLexer.interp" afterDir="false" />
@@ -79,20 +61,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/84865/Documents/HCMUT-cse20/CSE-PPL/test&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/84865/Documents/HCMUT-cse20/PYTHON",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Python tests.Python tests for LexerSuite.LexerSuite.test_literals_float_7">
     <configuration name="Python tests for LexerSuite.LexerSuite.test_literals_float_7" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="assignment-1" />
@@ -149,7 +131,10 @@
       <workItem from="1677314103100" duration="7138000" />
       <workItem from="1677333218523" duration="9709000" />
       <workItem from="1677379014604" duration="7935000" />
-      <workItem from="1677407124261" duration="3229000" />
+      <workItem from="1677407124261" duration="3490000" />
+      <workItem from="1677829317182" duration="37000" />
+      <workItem from="1677898976263" duration="135000" />
+      <workItem from="1677902086333" duration="21000" />
     </task>
     <servers />
   </component>

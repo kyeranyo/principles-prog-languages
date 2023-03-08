@@ -1,1 +1,1 @@
-x, y, z: integer = 1, 2, 3;
+ "Day la chuoi chu \@ ki tu dac biet \@" 

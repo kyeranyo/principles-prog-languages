@@ -1,0 +1,7 @@
+
+            /* main function */
+            ac : float = 12.0e-10;
+            main: function float () {
+                a = 1_23_1414_214;
+            }
+        
