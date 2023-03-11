@@ -1,1 +1,3 @@
-Illegal Escape In String: IEls fo\b my acb\t the dst \' \\ se rat dep do\>
+Program([
+	FuncDecl(in, VoidType, [], None, BlockStmt([WhileStmt(BooleanLit(True), BlockStmt([]))]))
+])

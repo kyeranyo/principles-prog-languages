@@ -1,4 +1,0 @@
-// ngay troi qua voi 
- // anh chang mong chung minh thanh doi 
- /*nguoi buoc di qua doi toi*/ 
- abc

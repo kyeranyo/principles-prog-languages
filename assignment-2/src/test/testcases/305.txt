@@ -1,1 +1,1 @@
- "IEls fo my acb\t the dst \q \\ se rat dep do\> " 
+x,y,z: integer;

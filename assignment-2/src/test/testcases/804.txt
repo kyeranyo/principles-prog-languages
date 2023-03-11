@@ -1,1 +1,0 @@
-f : array [4,5] of integer;

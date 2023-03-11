@@ -1,1 +1,3 @@
-Illegal Escape In String: IEls fo my acb\\ the dst \q
+Program([
+	FuncDecl(main, VoidType, [], None, BlockStmt([]))
+])

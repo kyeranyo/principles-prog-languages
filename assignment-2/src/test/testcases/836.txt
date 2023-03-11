@@ -1,6 +1,0 @@
-
-            integers: array [5] of integer = {1, 2, 3, "a"};
-            a = 10;
-            a : integer = "hello world";
-            c : float = 812.123e-10;
-        

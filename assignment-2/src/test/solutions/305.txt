@@ -1,1 +1,5 @@
-Illegal Escape In String: IEls fo my acb\t the dst \q
+Program([
+	VarDecl(x, IntegerType)
+	VarDecl(y, IntegerType)
+	VarDecl(z, IntegerType)
+])

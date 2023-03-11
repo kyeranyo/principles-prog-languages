@@ -60,7 +60,7 @@ class ParserSuite(unittest.TestCase):
 
     def test_program_12(self):
         """CASE : #2 202.txt"""
-        input = "f : float = 124.41_124e-10 ;"
+        input = "f : float = 124.41124e-10 ;"
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 812))
 

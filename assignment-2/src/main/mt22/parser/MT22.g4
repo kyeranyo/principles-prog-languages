@@ -4,7 +4,8 @@
  Email: hung.hoduccse@hcmut.edu.vn
  */
 
-grammar MT22;
+grammar MT22
+;
 
 @lexer::header {
 from lexererr import *
@@ -19,30 +20,35 @@ program: decls+ EOF;
 decls: vardecl | funcdecl;
 
 // Array type -------------------------------------------------------------
-arraytype: ARRAY LSB dimesion RSB OF eletype;
+arraytype: ARRAY LSB dimension RSB OF eletype;
 
 number: INTLIT | FLOATLIT;
 eletype: INTEGER | FLOAT | BOOLEAN | STRING | AUTO;
-dimesion: number COMMA dimesion | number;
+dimension: INTLIT COMMA dimension | INTLIT;
 
 //Variables ---------------------------------------------------------------
 vardecl: vardeclNoEq | vardeclEq;
 
 vardeclNoEq: idlist COLON (eletype | arraytype) SEMI;
-vardeclEq:
-	IDENTIFIER (
-		COMMA assignRecur
-		| COLON (eletype | arraytype) EQUAL
-	) expr SEMI
+
+// remove arraytype
+// vardeclEq
+// 	: IDENTIFIER (COMMA assignRecur | COLON (eletype) EQUAL) expr SEMI
+// ;
+vardeclEq
+	: IDENTIFIER COMMA assignment COMMA expr SEMI
+	| IDENTIFIER COLON eletype EQUAL expr SEMI
 ;
-assignRecur:
-	IDENTIFIER (
-		COMMA assignRecur
-		| COLON (eletype | arraytype) EQUAL
-	) expr COMMA
+assignment
+	: IDENTIFIER COMMA assignment COMMA expr
+	| IDENTIFIER COLON eletype EQUAL expr
 ;
-arraylist: LCB (explistTerm) RCB;
-explistTerm: exprlist |;
+
+// assignRecur
+// 	: IDENTIFIER (COMMA assignRecur | COLON (eletype) EQUAL) expr COMMA
+// ;
+
+arraylist: LCB (exprlist |) RCB;
 idlist: IDENTIFIER COMMA idlist | IDENTIFIER;
 exprlist: expr COMMA exprlist | expr;
 
@@ -52,34 +58,40 @@ parameter: (INHERIT |) (OUT |) IDENTIFIER COLON eletype;
 // expression declarations --------------------------------------------------
 expr: expr1 CONCAT expr1 | expr1;
 
-expr1:
-	expr2 (EQUAL_TO | NOT_EQUAL | LESS | GREATER | LTE | GTE) expr2
-	| expr2
-;
+expr1: expr2 compare expr2 | expr2;
+compare: EQUAL_TO | NOT_EQUAL | LESS | GREATER | LTE | GTE;
+
 expr2: expr2 (AND | OR) expr3 | expr3;
+
 expr3: expr3 (PLUS | MINUS) expr4 | expr4;
+
 expr4: expr4 (MUL | DIV | MOD) expr5 | expr5;
+
 expr5: NOT expr5 | expr6;
+
 expr6: MINUS expr6 | expr7;
-expr7: expr7 factor | expr8;
+
+expr7: IDENTIFIER LSB exprlist RSB | expr8;
+
 expr8: (LB expr RB) | factor;
-factor:
-	INTLIT
+
+factor
+	: INTLIT
 	| FLOATLIT
 	| STRINGLIT
 	| IDENTIFIER
 	| funccall
 	| arraylist
 	| BOOLEANLIT
-	| IDENTIFIER LSB (exprlist | factor | expr) RSB
 ;
 
+arrayCell: IDENTIFIER LSB exprlist RSB;
 // function call ------------------------------------------------------------
 funccall: IDENTIFIER LB (exprlist |) RB;
 
 // statement ----------------------------------------------------------------
-stmt:
-	assignStmt
+stmt
+	: assignStmt
 	| ifStmt
 	| forStmt
 	| whileStmt
@@ -100,23 +112,15 @@ lhs: IDENTIFIER LSB exprlist RSB | IDENTIFIER;
 ifStmt: (IF expr stmt ELSE stmt) | IF expr stmt;
 
 // for statement -------------------------------------------------------------
-forStmt:
-	FOR LB (initExpr |) COMMA (conditionExpr |) COMMA (
-		updateExpr
-		|
-	) RB stmt
+forStmt
+	: FOR LB initExpr COMMA conditionExpr COMMA updateExpr RB stmt
 ;
+
 initExpr: IDENTIFIER EQUAL expr;
-conditionExpr:
-	IDENTIFIER (
-		LESS
-		| GREATER
-		| LTE
-		| GTE
-		| NOT_EQUAL
-		| EQUAL_TO
-	) (IDENTIFIER | expr)
-;
+
+conditionExpr: IDENTIFIER operator expr;
+operator: LESS | GREATER | LTE | GTE | NOT_EQUAL | EQUAL_TO;
+
 updateExpr: IDENTIFIER EQUAL expr;
 
 // while statement ------------------------------------------------------------
@@ -126,10 +130,10 @@ whileStmt: WHILE LB expr RB stmt;
 doWhileStmt: DO blockStmt WHILE expr SEMI;
 
 // call statement -------------------------------------------------------------
-callStmt: (funccall | sfuncdecl) SEMI;
+callStmt: IDENTIFIER LB (exprlist |) RB SEMI;
 
 // block statement ------------------------------------------------------------
-blockStmt: (LCB stmtTerm RCB);
+blockStmt: LCB stmtTerm RCB;
 stmtTerm: stmtList |;
 stmtList: stmt stmtList | stmt;
 
@@ -143,59 +147,59 @@ continueStmt: CONTINUE SEMI;
 returnStmt: RETURN (expr |) SEMI;
 
 // Function declarations ------------------------------------------------------
-funcdecl:
-	IDENTIFIER COLON FUNCTION returnType LB paramterList RB inheritance stmt
+funcdecl
+	: IDENTIFIER COLON FUNCTION returnType LB paramterList RB inheritance blockStmt
 ;
-inheritance: INHERIT function_name |;
-function_name: IDENTIFIER;
+
+inheritance: INHERIT IDENTIFIER |;
 paramterList: paramterListTerm |;
 paramterListTerm: parameter COMMA paramterListTerm | parameter;
-
 returnType: INTEGER | FLOAT | BOOLEAN | STRING | VOID | AUTO;
 
 // Special Functions ------------------------------------------------------------
-sfuncdecl:
-	read_integer
-	| print_integer
-	| read_float
-	| write_float
-	| print_boolean
-	| read_string
-	| print_string
-	| super_
-	| prevent_default
-;
+//sfuncdecl
+//	: read_integer
+//	| print_integer
+//	| read_float
+//	| write_float
+//	| print_boolean
+//	| read_string
+//	| print_string
+//	| super_
+//	| prevent_default
+//;
+//
+//read_integer: 'readInteger' LB RB;
+//print_integer
+//	: 'printInteger' LB (INTLIT | IDENTIFIER | expr) RB
+//;
+//read_float: 'readFloat' LB RB;
+//write_float: 'writeFloat' LB (FLOATLIT | IDENTIFIER | expr) RB;
+//print_boolean
+//	: 'printBoolean' LB (BOOLEANLIT | IDENTIFIER | expr) RB
+//;
+//read_string: 'readString' LB RB;
+//print_string
+//	: 'printString' LB (STRINGLIT | IDENTIFIER | expr) RB
+//;
+//super_: 'super' LB exprlist RB;
+//prevent_default: 'preventDefault' LB RB;
 
-read_integer: 'readInteger' LB RB;
-print_integer:
-	'printInteger' LB (INTLIT | IDENTIFIER | expr) RB
-;
-read_float: 'readFloat' LB RB;
-write_float: 'writeFloat' LB (FLOATLIT | IDENTIFIER | expr) RB;
-print_boolean:
-	'printBoolean' LB (BOOLEANLIT | IDENTIFIER | expr) RB
-;
-read_string: 'readString' LB RB;
-print_string:
-	'printString' LB (STRINGLIT | IDENTIFIER | expr) RB
-;
-super_: 'super' LB exprlist RB;
-prevent_default: 'preventDefault' LB RB;
-
-/* --------------------------------------TOKEN------------------------------------------------------- */
+/* --------------------------------------TOKEN---------------------------------*/
 COMMENT: (SingleLineComment | MultiLineComment) -> skip;
 fragment SingleLineComment: '//' ~('\r' | '\n')*;
 fragment MultiLineComment: '/*' .*? '*/';
 fragment CommentAll: '/*' .*? EOF;
 
-INTLIT:
-	'0'
+INTLIT
+	: '0'
 	| [1-9][0-9]* (UNDERSCORE [0-9]+)* {self.text = self.text.replace("_","")}
 ;
 
 fragment UNDERSCORE: '_';
 
-FLOATLIT: (
+FLOATLIT
+	: (
 		INTLIT DECPART EXPPART
 		| INTLIT DECPART
 		| INTLIT EXPPART
@@ -209,14 +213,14 @@ BOOLEANLIT: FALSE | TRUE;
 fragment FALSE: 'false';
 fragment TRUE: 'true';
 
-STRINGLIT:
-	DUO_QUOTE (~[\n\r\\"] | ESC)* DUO_QUOTE {self.text=str(self.text[1:-1])}
+STRINGLIT
+	: DUO_QUOTE (~[\n\r\\"] | ESC)* DUO_QUOTE {self.text=str(self.text[1:-1])}
 ;
-fragment NOTESC:
-	'\\' ~('b' | 'f' | 'n' | 'r' | 't' | '"' | '\'' | '\\')
+fragment NOTESC
+	: '\\' ~('b' | 'f' | 'n' | 'r' | 't' | '"' | '\'' | '\\')
 ;
-fragment ESC:
-	'\\' ('b' | 'f' | 'n' | 'r' | 't' | '\'' | '\\' | '"')
+fragment ESC
+	: '\\' ('b' | 'f' | 'n' | 'r' | 't' | '\'' | '\\' | '"')
 ;
 fragment AllEscSeq: '\\' ~["];
 fragment DUO_QUOTE: ["];
@@ -274,19 +278,16 @@ IDENTIFIER: [a-zA-Z_]+ [a-zA-Z0-9_]*;
 
 WS: [ \t\r\n]+ -> skip; // skip spaces, tabs, newlines
 
-UNCLOSE_STRING:
-	DUO_QUOTE (~["] | ESC)*? (
-		[\r\n]
-		| EOF
-	) {
+UNCLOSE_STRING
+	: DUO_QUOTE (~["] | ESC)*? ([\r\n] | EOF) {
 s = self.text
 if s[len(s) - 1] == '\n' or s[len(s) - 1] == '\r':
     raise UncloseString(self.text[1:-1])
 raise UncloseString(self.text[1:])
 }
 ;
-ILLEGAL_ESCAPE:
-	DUO_QUOTE (~[\\"] | ESC)* NOTESC {raise IllegalEscape(self.text[1:])
+ILLEGAL_ESCAPE
+	: DUO_QUOTE (~[\\"] | ESC)* NOTESC {raise IllegalEscape(self.text[1:])
 		}
 ;
 ERROR_CHAR: .{raise ErrorToken(self.text)};

@@ -1,1 +1,0 @@
-em,khong,ve,chung,voi,anh,*,/,<EOF>

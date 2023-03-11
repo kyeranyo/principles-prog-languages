@@ -1,1 +1,5 @@
- "IEls fo\b my acb\t the dst \' \\ se rat dep do\> " 
+
+        in : function void () {
+                while (true) {}
+        }
+        
