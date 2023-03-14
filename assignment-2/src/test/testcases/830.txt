@@ -1,0 +1,18 @@
+
+             ABNCASDH : auto ;
+             main: function void(){
+                 a : auto = 12.128431e-10;
+                 var = se % 10 + 10 - 1;
+                 a : auto = "string";
+                 // abc yxy comment is here ??
+                 /* abcas uasdn uqwnsdad */
+
+                 var = "em oi " + "lau dai tinh ai" :: "chac khong co tren tran gian";
+                 while(acn > 10 + 1){
+                     s = l + 1;
+                     for ( i = 1, j > 0 , c = c + 1){
+                         return a + fact(12);
+                     }
+                 }
+             }
+         

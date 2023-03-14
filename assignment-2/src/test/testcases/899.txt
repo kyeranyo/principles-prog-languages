@@ -1,0 +1,9 @@
+
+            func: function void () {
+                if ("i wanna hide the truth") 
+                    while("i wanna shelter you")
+                        if ("but with the beast inside")
+                            while("there's nowhere we can hide")
+                                return "No matter what we breed";
+            }
+        

@@ -1,0 +1,7 @@
+
+            /* main function */
+            ac : float = 12.0e-10;
+            main: function float () {
+                a = "@#$&^@$(@(ahs\"ash\"%%@&@\"dsad\"123&^@@";
+            }
+        

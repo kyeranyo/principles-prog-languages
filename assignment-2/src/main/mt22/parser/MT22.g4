@@ -48,7 +48,7 @@ assignment
 // 	: IDENTIFIER (COMMA assignRecur | COLON (eletype) EQUAL) expr COMMA
 // ;
 
-arraylist: LCB (exprlist |) RCB;
+arraylit: LCB (exprlist |) RCB;
 idlist: IDENTIFIER COMMA idlist | IDENTIFIER;
 exprlist: expr COMMA exprlist | expr;
 
@@ -81,7 +81,7 @@ factor
 	| STRINGLIT
 	| IDENTIFIER
 	| funccall
-	| arraylist
+	| arraylit
 	| BOOLEANLIT
 ;
 
@@ -121,7 +121,7 @@ initExpr: IDENTIFIER EQUAL expr;
 conditionExpr: IDENTIFIER operator expr;
 operator: LESS | GREATER | LTE | GTE | NOT_EQUAL | EQUAL_TO;
 
-updateExpr: IDENTIFIER EQUAL expr;
+updateExpr: IDENTIFIER EQUAL expr | expr;
 
 // while statement ------------------------------------------------------------
 whileStmt: WHILE LB expr RB stmt;

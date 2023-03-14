@@ -53,7 +53,6 @@ class ASTGeneration(MT22Visitor):
         return [str(ctx.INTLIT().getText())] + self.visit(ctx.dimension())
 
     # Visit a parse tree produced by MT22Parser#vardecl.
-
     def visitVardecl(self, ctx: MT22Parser.VardeclContext):
         return self.visitChildren(ctx)
 
@@ -105,9 +104,9 @@ class ASTGeneration(MT22Visitor):
         else:
             return [ctx.IDENTIFIER().getText(), self.visit(ctx.assignment()), self.visit(ctx.expr())]
 
-    # Visit a parse tree produced by MT22Parser#arraylist.
-    def visitArraylist(self, ctx: MT22Parser.ArraylistContext):
-        return self.visitChildren(ctx)
+    # Visit a parse tree produced by MT22Parser#arraylit.
+    def visitArraylit(self, ctx: MT22Parser.ArraylitContext):
+        return ArrayLit(self.visit(ctx.exprlist()) if ctx.exprlist() else [])
 
     # Visit a parse tree produced by MT22Parser#idlist.
     def visitIdlist(self, ctx: MT22Parser.IdlistContext):
@@ -205,9 +204,9 @@ class ASTGeneration(MT22Visitor):
     def visitExpr7(self, ctx: MT22Parser.Expr7Context):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.expr8())
-        ident = ctx.INDENTIFIER().getText()
-        exp = ctx.visit(ctx.exprlist())
-        return ArrayCell(ident, exp)
+        ident = ctx.IDENTIFIER().getText()
+        exp = self.visit(ctx.exprlist())
+        return ArrayCell(ident, exp)  # a[1,2,3]
 
     # Visit a parse tree produced by MT22Parser#expr8.
 
@@ -220,17 +219,17 @@ class ASTGeneration(MT22Visitor):
     # Visit a parse tree produced by MT22Parser#factor.
     def visitFactor(self, ctx: MT22Parser.FactorContext):
         if ctx.INTLIT():
-            return IntegerLit(str(ctx.INTLIT().getText()))
+            return IntegerLit(int(ctx.INTLIT().getText()))
         elif ctx.FLOATLIT():
             return FloatLit(float(ctx.FLOATLIT().getText()))
         elif ctx.STRINGLIT():
-            return StringLit(str(ctx.STRINGLIT().getText()))
+            return StringLit(ctx.STRINGLIT().getText())
         elif ctx.IDENTIFIER():
             return Id(str(ctx.IDENTIFIER().getText()))
         elif ctx.funccall():
             return self.visit(ctx.funccall())
-        elif ctx.arraylist():
-            return self.visit(ctx.arraylist())
+        elif ctx.arraylit():
+            return self.visit(ctx.arraylit())
         elif ctx.BOOLEANLIT():
             return BooleanLit(True if ctx.BOOLEANLIT().getText() == "true" else False)
 
@@ -264,6 +263,8 @@ class ASTGeneration(MT22Visitor):
             return self.visit(ctx.breakStmt())
         elif ctx.callStmt():
             return self.visit(ctx.callStmt())
+        # lst = self.visit(ctx.vardecl())
+        # return BlockStmt(lst if isinstance(lst, list) else [lst])
         return self.visit(ctx.vardecl())
 
     # Visit a parse tree produced by MT22Parser#assignStmt.
@@ -283,9 +284,18 @@ class ASTGeneration(MT22Visitor):
     # Visit a parse tree produced by MT22Parser#ifStmt.
     def visitIfStmt(self, ctx: MT22Parser.IfStmtContext):
         expr = self.visit(ctx.expr())
+        
         if ctx.getChildCount() == 3:
-            return IfStmt(expr, self.visit(ctx.stmt()))
-        return IfStmt(expr, self.visit(ctx.stmt(0)), self.visit(ctx.stmt(1)))
+            stmt = self.visit(ctx.stmt(0))
+            if isinstance(stmt, list):
+                fstmt = BlockStmt(stmt) if isinstance(stmt[0], VarDecl) else stmt
+                return IfStmt(expr, fstmt)
+            fstmt = BlockStmt([stmt]) if isinstance(stmt, VarDecl) else stmt
+            return IfStmt(expr, fstmt)
+        
+        left = self.visit(ctx.stmt(0))
+        right = self.visit(ctx.stmt(1))
+        return IfStmt(expr, left, right)
 
     # Visit a parse tree produced by MT22Parser#forStmt.
     def visitForStmt(self, ctx: MT22Parser.ForStmtContext):
@@ -318,9 +328,11 @@ class ASTGeneration(MT22Visitor):
             return ctx.LTE().getText()
         return ctx.NOT_EQUAL().getText()
 
-
     # Visit a parse tree produced by MT22Parser#updateExpr.
+
     def visitUpdateExpr(self, ctx: MT22Parser.UpdateExprContext):
+        if ctx.getChildCount() == 1:
+            return self.visit(ctx.expr())
         return AssignStmt(Id(ctx.IDENTIFIER().getText()), self.visit(ctx.expr()))
 
     # Visit a parse tree produced by MT22Parser#whileStmt.

@@ -1,0 +1,8 @@
+
+            var : string = "hello world";
+            foo : function auto () {}
+            main: function void(){
+                var = "Lau Dai Tinh Ai" :: var;
+                return foo(123);
+            }
+        

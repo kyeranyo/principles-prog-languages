@@ -1,3 +1,0 @@
-Program([
-	FuncDecl(in, VoidType, [], None, BlockStmt([WhileStmt(BooleanLit(True), BlockStmt([ContinueStmt(), BreakStmt(), ReturnStmt(BinExpr(+, BinExpr(+, BinExpr(-, BinExpr(+, Id(a), Id(b)), BinExpr(*, Id(c), Id(d))), BinExpr(*, Id(e), Id(f))), IntegerLit(999999))), ReturnStmt()]))]))
-])

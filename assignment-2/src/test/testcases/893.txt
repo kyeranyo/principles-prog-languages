@@ -1,0 +1,9 @@
+
+            /* main function */
+            factor : integer = 10.0;
+            main: function float () {
+                /*tran khac chan nam qua xa, */ 
+ //ve day voi nhau hai dua dap chung men*/ abcxyz
+                a = true || false;
+            }
+        

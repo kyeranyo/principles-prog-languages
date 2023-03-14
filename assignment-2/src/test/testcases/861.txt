@@ -1,0 +1,7 @@
+
+            /* main function */
+            main: function float () {
+                a = true || false;
+                a = as[1] + 123 - 1 + a[a[0]];
+            }
+        

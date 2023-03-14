@@ -1,0 +1,21 @@
+
+            /* main function */
+            main: function float (a : auto, b: auto) {
+                n = 10 + 132 * x / 10 == 0 + cn;
+                for (i = 0 , i > n , i = i + 1) break;
+                while(n && a) continue;
+                do {} while(n || a);
+                if ( n > 0) {
+                    var : string = "hello" ::  "world";
+                } else return 0;
+                if ( n && 0 ){
+                    while(n == 0){
+                        return false;
+                    }
+                    for (i = 0, i < 5, i +1 ){
+                        a = 10;
+                        a = a + 123 && b - 10 * 18 -19;
+                    }
+                }
+            }
+        

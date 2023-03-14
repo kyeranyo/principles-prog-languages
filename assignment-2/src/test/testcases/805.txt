@@ -1,0 +1,1 @@
+x, y, z: array [2] of integer = {5e10 + "hello", -0.0e8}, "hello \n", 123456789;

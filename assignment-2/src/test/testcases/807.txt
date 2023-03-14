@@ -1,0 +1,1 @@
+f : array [1] of integer = {1214, 123};

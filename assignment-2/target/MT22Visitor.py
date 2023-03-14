@@ -59,8 +59,8 @@ class MT22Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MT22Parser#arraylist.
-    def visitArraylist(self, ctx:MT22Parser.ArraylistContext):
+    # Visit a parse tree produced by MT22Parser#arraylit.
+    def visitArraylit(self, ctx:MT22Parser.ArraylitContext):
         return self.visitChildren(ctx)
 
 

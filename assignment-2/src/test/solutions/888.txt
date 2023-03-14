@@ -1,0 +1,4 @@
+Program([
+	VarDecl(factor, IntegerType, FloatLit(10.0))
+	FuncDecl(main, FloatType, [], None, BlockStmt([AssignStmt(Id(a), StringLit(He asked me: \"Where is John?\"))]))
+])

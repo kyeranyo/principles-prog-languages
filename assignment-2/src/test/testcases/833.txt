@@ -1,0 +1,10 @@
+
+             ABNCASDH : auto ;
+             main: function void(){
+                do {return 0;} while(b < 9);
+                for(i = 0 , i == 1-1, a = 294) return ;
+
+                if (a == 1 + 1) return;
+                a : float = 123.1241824e-10;
+             }
+         

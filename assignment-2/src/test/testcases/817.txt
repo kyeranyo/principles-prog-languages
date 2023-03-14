@@ -1,0 +1,13 @@
+
+            var : string = "hello world";
+            main: function void(){
+                var : integer = 1;
+                if (a > 0) var2 : integer = 2;
+                do{
+                    return false;
+                }while(n == 0);
+                var = "Lau Dai Tinh Ai" :: var;
+                for(i = 0, i < n, i + 1) {}
+                test(123, ytx, 5+2+5+5);
+            }
+        
