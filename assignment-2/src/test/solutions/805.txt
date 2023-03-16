@@ -1,5 +1,0 @@
-Program([
-	VarDecl(x, ArrayType([2], IntegerType))
-	VarDecl(y, ArrayType([2], IntegerType))
-	VarDecl(z, ArrayType([2], IntegerType))
-])

@@ -1,4 +1,0 @@
-Program([
-	VarDecl(ABNCASDH, AutoType)
-	FuncDecl(main, VoidType, [], None, BlockStmt([None, ForStmt(AssignStmt(Id(i), IntegerLit(0)), BinExpr(==, Id(i), BinExpr(-, IntegerLit(1), IntegerLit(1))), AssignStmt(Id(a), IntegerLit(294)), ReturnStmt())]))
-])

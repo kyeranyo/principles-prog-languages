@@ -1,4 +1,0 @@
-Program([
-	VarDecl(ABNCASDH, AutoType)
-	FuncDecl(main, VoidType, [], None, BlockStmt([None]))
-])

@@ -1,3 +1,0 @@
-Program([
-	VarDecl(fac, ArrayType([4], StringType))
-])

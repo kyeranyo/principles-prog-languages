@@ -1,3 +1,0 @@
-Program([
-	FuncDecl(main, FloatType, [], None, BlockStmt([AssignStmt(Id(a), StringLit(@#$&^@$(@(ahs\"ash\"%%@&@\"dsad\"123&^@@))]))
-])

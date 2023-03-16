@@ -1,4 +1,0 @@
-Program([
-	VarDecl(f, IntegerType, ArrayLit([StringLit(abc), StringLit(xyz)]))
-	VarDecl(y, IntegerType, BinExpr(==, IntegerLit(1), IntegerLit(1)))
-])

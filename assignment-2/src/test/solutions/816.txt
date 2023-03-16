@@ -1,5 +1,0 @@
-Program([
-	VarDecl(var, StringType, StringLit(hello world))
-	FuncDecl(sub, BooleanType, [Param(var, StringType), Param(delta, BooleanType)], None, BlockStmt([AssignStmt(Id(str), StringLit(wtf r u doing here !!!))]))
-	FuncDecl(main, VoidType, [], None, BlockStmt([None, AssignStmt(Id(var), BinExpr(::, StringLit(Lau Dai Tinh Ai), Id(var))), IfStmt(BinExpr(==, Id(n), IntegerLit(0)), BlockStmt([]), BlockStmt([]))]))
-])

@@ -1,3 +1,0 @@
-Program([
-	VarDecl(integers, ArrayType([5], IntegerType))
-])

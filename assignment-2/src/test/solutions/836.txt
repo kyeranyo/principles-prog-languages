@@ -1,5 +1,0 @@
-Program([
-	VarDecl(integers, ArrayType([5], IntegerType))
-	VarDecl(a, IntegerType, StringLit(hello world))
-	VarDecl(c, FloatType, FloatLit(8.12123e-08))
-])

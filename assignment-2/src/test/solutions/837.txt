@@ -1,3 +1,0 @@
-Program([
-	VarDecl(f, IntegerType, FuncCall(foo, [BinExpr(-, BinExpr(+, IntegerLit(5), IntegerLit(2)), BinExpr(*, IntegerLit(6), IntegerLit(1)))]))
-])

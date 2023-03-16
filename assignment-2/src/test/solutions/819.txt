@@ -1,4 +1,0 @@
-Program([
-	VarDecl(var, StringType, StringLit(hello world))
-	FuncDecl(main, VoidType, [], None, BlockStmt([None, AssignStmt(Id(var), BinExpr(::, StringLit(Lau Dai Tinh Ai), Id(var))), ForStmt(AssignStmt(Id(i), IntegerLit(0)), BinExpr(<, Id(i), Id(n)), BinExpr(+, Id(i), IntegerLit(1)), BreakStmt()), IfStmt(BinExpr(<, Id(i), IntegerLit(1)), ReturnStmt(BinExpr(+, IntegerLit(1), FuncCall(foo, [IntegerLit(2)])))), CallStmt(test, IntegerLit(123), Id(ytx), BinExpr(+, BinExpr(+, BinExpr(+, IntegerLit(5), IntegerLit(2)), IntegerLit(5)), IntegerLit(5)))]))
-])

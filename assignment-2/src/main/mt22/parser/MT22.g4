@@ -37,11 +37,11 @@ vardeclNoEq: idlist COLON (eletype | arraytype) SEMI;
 // ;
 vardeclEq
 	: IDENTIFIER COMMA assignment COMMA expr SEMI
-	| IDENTIFIER COLON eletype EQUAL expr SEMI
+	| IDENTIFIER COLON (eletype | arraytype) EQUAL expr SEMI
 ;
 assignment
 	: IDENTIFIER COMMA assignment COMMA expr
-	| IDENTIFIER COLON eletype EQUAL expr
+	| IDENTIFIER COLON (eletype | arraytype) EQUAL expr
 ;
 
 // assignRecur
@@ -53,7 +53,9 @@ idlist: IDENTIFIER COMMA idlist | IDENTIFIER;
 exprlist: expr COMMA exprlist | expr;
 
 //Parameters ----------------------------------------------------------------
-parameter: (INHERIT |) (OUT |) IDENTIFIER COLON eletype;
+parameter
+	: (INHERIT |) (OUT |) IDENTIFIER COLON (eletype | arraytype)
+;
 
 // expression declarations --------------------------------------------------
 expr: expr1 CONCAT expr1 | expr1;
@@ -87,7 +89,7 @@ factor
 
 arrayCell: IDENTIFIER LSB exprlist RSB;
 // function call ------------------------------------------------------------
-funccall: IDENTIFIER LB (exprlist |) RB;
+funccall: (IDENTIFIER LB (exprlist |) RB) | sfuncdecl;
 
 // statement ----------------------------------------------------------------
 stmt
@@ -96,7 +98,6 @@ stmt
 	| forStmt
 	| whileStmt
 	| doWhileStmt
-	| blockStmt
 	| returnStmt
 	| continueStmt
 	| breakStmt
@@ -104,33 +105,35 @@ stmt
 	| vardecl
 ;
 
+stmtlocal: stmt | blockStmt;
+
 // assignment statement ------------------------------------------------------
 assignStmt: lhs EQUAL expr SEMI;
 lhs: IDENTIFIER LSB exprlist RSB | IDENTIFIER;
 
 // if statement --------------------------------------------------------------
-ifStmt: (IF expr stmt ELSE stmt) | IF expr stmt;
+ifStmt: (IF expr stmtlocal ELSE stmtlocal) | IF expr stmtlocal;
 
 // for statement -------------------------------------------------------------
 forStmt
-	: FOR LB initExpr COMMA conditionExpr COMMA updateExpr RB stmt
+	: FOR LB initExpr COMMA conditionExpr COMMA updateExpr RB stmtlocal
 ;
 
 initExpr: IDENTIFIER EQUAL expr;
 
-conditionExpr: IDENTIFIER operator expr;
+conditionExpr: expr operator expr;
 operator: LESS | GREATER | LTE | GTE | NOT_EQUAL | EQUAL_TO;
 
-updateExpr: IDENTIFIER EQUAL expr | expr;
+updateExpr: expr;
 
 // while statement ------------------------------------------------------------
-whileStmt: WHILE LB expr RB stmt;
+whileStmt: WHILE LB expr RB stmtlocal;
 
 // Do while statement ---------------------------------------------------------
 doWhileStmt: DO blockStmt WHILE expr SEMI;
 
 // call statement -------------------------------------------------------------
-callStmt: IDENTIFIER LB (exprlist |) RB SEMI;
+callStmt: (sfuncdecl | (IDENTIFIER LB (exprlist |) RB)) SEMI;
 
 // block statement ------------------------------------------------------------
 blockStmt: LCB stmtTerm RCB;
@@ -154,36 +157,48 @@ funcdecl
 inheritance: INHERIT IDENTIFIER |;
 paramterList: paramterListTerm |;
 paramterListTerm: parameter COMMA paramterListTerm | parameter;
-returnType: INTEGER | FLOAT | BOOLEAN | STRING | VOID | AUTO;
+returnType
+	: INTEGER
+	| FLOAT
+	| BOOLEAN
+	| STRING
+	| VOID
+	| AUTO
+	| arraytype
+;
 
 // Special Functions ------------------------------------------------------------
-//sfuncdecl
-//	: read_integer
-//	| print_integer
-//	| read_float
-//	| write_float
-//	| print_boolean
-//	| read_string
-//	| print_string
-//	| super_
-//	| prevent_default
-//;
-//
-//read_integer: 'readInteger' LB RB;
-//print_integer
-//	: 'printInteger' LB (INTLIT | IDENTIFIER | expr) RB
-//;
-//read_float: 'readFloat' LB RB;
-//write_float: 'writeFloat' LB (FLOATLIT | IDENTIFIER | expr) RB;
-//print_boolean
-//	: 'printBoolean' LB (BOOLEANLIT | IDENTIFIER | expr) RB
-//;
-//read_string: 'readString' LB RB;
-//print_string
-//	: 'printString' LB (STRINGLIT | IDENTIFIER | expr) RB
-//;
-//super_: 'super' LB exprlist RB;
-//prevent_default: 'preventDefault' LB RB;
+sfuncdecl
+	: readInteger
+	| readFloat
+	| printInteger
+	| writeFloat
+	| printBoolean
+	| readString
+	| printString
+	| superCall
+	| preventDefault
+;
+
+readInteger: READINTEGER LB RB;
+printInteger: PRINTINTEGER LB expr RB;
+readFloat: READFLOAT LB RB;
+writeFloat: WRITEFLOAT LB expr RB;
+printBoolean: PRINTBOOLEAN LB expr RB;
+readString: READSTRING LB RB;
+printString: PRINTSTRING LB expr RB;
+superCall: SUPER LB exprlist RB;
+preventDefault: PREVENTDEFAULT LB RB;
+
+PREVENTDEFAULT: 'preventDefault';
+SUPER: 'super';
+PRINTSTRING: 'printString';
+READSTRING: 'readString';
+PRINTBOOLEAN: 'printBoolean';
+WRITEFLOAT: 'writeFloat';
+READFLOAT: 'readFloat';
+PRINTINTEGER: 'printInteger';
+READINTEGER: 'readInteger';
 
 /* --------------------------------------TOKEN---------------------------------*/
 COMMENT: (SingleLineComment | MultiLineComment) -> skip;
@@ -214,7 +229,7 @@ fragment FALSE: 'false';
 fragment TRUE: 'true';
 
 STRINGLIT
-	: DUO_QUOTE (~[\n\r\\"] | ESC)* DUO_QUOTE {self.text=str(self.text[1:-1])}
+	: DUO_QUOTE (ESC | ~[\n\r"])* DUO_QUOTE {self.text=str(self.text[1:-1])}
 ;
 fragment NOTESC
 	: '\\' ~('b' | 'f' | 'n' | 'r' | 't' | '"' | '\'' | '\\')
