@@ -1,0 +1,4 @@
+Program([
+	VarDecl(ac, FloatType, FloatLit(1.2e-09))
+	FuncDecl(main, FloatType, [], None, BlockStmt([AssignStmt(Id(a), ArrayLit([]))]))
+])

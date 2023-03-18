@@ -1,0 +1,9 @@
+
+            /* main function */
+            ac : float = 12.0e-10;
+            str : auto = "abc";
+            main: function float () {
+                a = 3200_21000_123_000;
+
+            }
+        

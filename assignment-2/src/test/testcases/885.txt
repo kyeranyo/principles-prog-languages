@@ -1,0 +1,9 @@
+
+            /* main function */
+            ac : float = 12.0e-10;
+            str : auto = "abc";
+            main: function float () {
+                a = "Chuoi cua ban la: \"12345\"";
+
+            }
+        

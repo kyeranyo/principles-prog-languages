@@ -222,7 +222,10 @@ class ASTGeneration(MT22Visitor):
         if ctx.INTLIT():
             return IntegerLit(int(ctx.INTLIT().getText()))
         elif ctx.FLOATLIT():
-            return FloatLit(float(ctx.FLOATLIT().getText()))
+            num = ctx.FLOATLIT().getText()
+            if num[0] == '.' and (num[1] == 'e' or num[1] == 'E'):
+                num = 0.0
+            return FloatLit(float(num))
         elif ctx.STRINGLIT():
             return StringLit(ctx.STRINGLIT().getText())
         elif ctx.IDENTIFIER():
@@ -249,27 +252,27 @@ class ASTGeneration(MT22Visitor):
 
     # Visit a parse tree produced by MT22Parser#stmt.
     def visitStmt(self, ctx: MT22Parser.StmtContext):
-        if ctx.assignStmt():
-            return self.visit(ctx.assignStmt())
-        elif ctx.ifStmt():
-            return self.visit(ctx.ifStmt())
-        elif ctx.forStmt():
-            return self.visit(ctx.forStmt())
-        elif ctx.whileStmt():
-            return self.visit(ctx.whileStmt())
-        elif ctx.doWhileStmt():
-            return self.visit(ctx.doWhileStmt())
-        elif ctx.returnStmt():
-            return self.visit(ctx.returnStmt())
-        elif ctx.continueStmt():
-            return self.visit(ctx.continueStmt())
-        elif ctx.breakStmt():
-            return self.visit(ctx.breakStmt())
-        elif ctx.callStmt():
-            return self.visit(ctx.callStmt())
-        lst = self.visit(ctx.vardecl())
-        return lst
-        # return self.visit(ctx.vardecl())
+        # if ctx.assignStmt():
+        #     return self.visit(ctx.assignStmt())
+        # elif ctx.ifStmt():
+        #     return self.visit(ctx.ifStmt())
+        # elif ctx.forStmt():
+        #     return self.visit(ctx.forStmt())
+        # elif ctx.whileStmt():
+        #     return self.visit(ctx.whileStmt())
+        # elif ctx.doWhileStmt():
+        #     return self.visit(ctx.doWhileStmt())
+        # elif ctx.returnStmt():
+        #     return self.visit(ctx.returnStmt())
+        # elif ctx.continueStmt():
+        #     return self.visit(ctx.continueStmt())
+        # elif ctx.breakStmt():
+        #     return self.visit(ctx.breakStmt())
+        # elif ctx.callStmt():
+        #     return self.visit(ctx.callStmt())
+        # lst = self.visit(ctx.vardecl())
+        # return lst
+        return self.visitChildren(ctx)
 
     # Visit a parse tree produced by MT22Parser#assignStmt.
     def visitAssignStmt(self, ctx: MT22Parser.AssignStmtContext):
@@ -293,12 +296,12 @@ class ASTGeneration(MT22Visitor):
     def visitIfStmt(self, ctx: MT22Parser.IfStmtContext):
         expr = self.visit(ctx.expr())
 
-        if ctx.getChildCount() == 3:
-            stmt = self.visit(ctx.stmtlocal(0))
+        if ctx.getChildCount() == 5:
+            stmt = self.visit(ctx.stmt(0))
             return IfStmt(expr, stmt)
 
-        left = self.visit(ctx.stmtlocal(0))
-        right = self.visit(ctx.stmtlocal(1))
+        left = self.visit(ctx.stmt(0))
+        right = self.visit(ctx.stmt(1))
         return IfStmt(expr, left, right)
 
     # Visit a parse tree produced by MT22Parser#forStmt.
@@ -306,7 +309,7 @@ class ASTGeneration(MT22Visitor):
         initexp = self.visit(ctx.initExpr())
         conditionExpr = self.visit(ctx.conditionExpr())
         updateExpr = self.visit(ctx.updateExpr())
-        stmt = self.visit(ctx.stmtlocal())
+        stmt = self.visit(ctx.stmt())
         return ForStmt(initexp, conditionExpr, updateExpr, stmt)
 
     # Visit a parse tree produced by MT22Parser#initExpr.
@@ -340,7 +343,7 @@ class ASTGeneration(MT22Visitor):
     def visitWhileStmt(self, ctx: MT22Parser.WhileStmtContext):
         # whileStmt: WHILE LB expr RB stmtlocal;
         expr = self.visit(ctx.expr())
-        stmt = self.visit(ctx.stmtlocal())
+        stmt = self.visit(ctx.stmt())
         return WhileStmt(expr, stmt)
 
     # Visit a parse tree produced by MT22Parser#doWhileStmt.
@@ -458,7 +461,7 @@ class ASTGeneration(MT22Visitor):
     # Visit a parse tree produced by MT22Parser#printBoolean.
     def visitPrintBoolean(self, ctx: MT22Parser.PrintBooleanContext):
         # printBoolean: PRINTBOOLEAN LB expr RB;
-        return ctx.PRINTBOOLEAN().getText(), None
+        return ctx.PRINTBOOLEAN().getText(), self.visit(ctx.expr())
 
     # Visit a parse tree produced by MT22Parser#readString.
     def visitReadString(self, ctx: MT22Parser.ReadStringContext):

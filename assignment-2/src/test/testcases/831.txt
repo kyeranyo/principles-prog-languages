@@ -1,0 +1,6 @@
+
+             ABNCASDH : auto ;
+             main: function void(){
+                do {return 0;} while(b < 9);
+             }
+         

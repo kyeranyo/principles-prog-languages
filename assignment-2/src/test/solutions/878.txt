@@ -1,0 +1,4 @@
+Program([
+	VarDecl(factor, IntegerType, FloatLit(10.0))
+	FuncDecl(main, FloatType, [], None, BlockStmt([ContinueStmt()]))
+])

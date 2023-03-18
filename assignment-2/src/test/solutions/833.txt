@@ -1,0 +1,4 @@
+Program([
+	VarDecl(ABNCASDH, AutoType)
+	FuncDecl(main, VoidType, [], None, BlockStmt([DoWhileStmt(BinExpr(<, Id(b), IntegerLit(9)), BlockStmt([ReturnStmt(IntegerLit(0))])), ForStmt(AssignStmt(Id(i), IntegerLit(0)), BinExpr(==, Id(i), BinExpr(-, IntegerLit(1), IntegerLit(1))), BinExpr(*, Id(a), IntegerLit(3)), ReturnStmt()), IfStmt(BinExpr(==, Id(a), BinExpr(+, IntegerLit(1), IntegerLit(1))), ReturnStmt()), VarDecl(a, FloatType, FloatLit(1.231241824e-08))]))
+])

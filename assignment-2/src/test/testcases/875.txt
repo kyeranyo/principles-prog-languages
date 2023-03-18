@@ -1,0 +1,10 @@
+
+            /* main function */
+            ac : float = 12.0e-10;
+            str : auto = "abc";
+            main: function float () {
+                for (i = 1, i < 10, i + 1) {
+                    writeInt(i);
+                }
+            }
+        

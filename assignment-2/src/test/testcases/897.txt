@@ -1,0 +1,9 @@
+
+            func: function void () {
+                if (i==1) 
+                    if (i==2)
+                        if (i > 3)
+                            if (i>=5)
+                                printString("I love you");
+            }
+        

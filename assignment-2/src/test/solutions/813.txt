@@ -1,0 +1,4 @@
+Program([
+	VarDecl(var, StringType, StringLit(hello world))
+	FuncDecl(main, VoidType, [], None, BlockStmt([DoWhileStmt(BinExpr(==, Id(n), IntegerLit(0)), BlockStmt([ReturnStmt(BooleanLit(False))])), AssignStmt(Id(var), BinExpr(::, StringLit(Lau Dai Tinh Ai), Id(var)))]))
+])

@@ -1,0 +1,5 @@
+Program([
+	VarDecl(ac, FloatType, FloatLit(1.2e-09))
+	VarDecl(str, AutoType, StringLit(abc))
+	FuncDecl(main, FloatType, [], None, BlockStmt([ForStmt(AssignStmt(Id(i), IntegerLit(1)), BinExpr(<, Id(i), IntegerLit(10)), BinExpr(+, Id(i), IntegerLit(1)), BlockStmt([CallStmt(writeInt, Id(i))]))]))
+])

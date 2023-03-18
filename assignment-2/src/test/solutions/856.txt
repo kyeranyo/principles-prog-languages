@@ -1,0 +1,3 @@
+Program([
+	FuncDecl(main, FloatType, [], None, BlockStmt([AssignStmt(Id(a), BinExpr(||, BooleanLit(True), BooleanLit(False))), ReturnStmt()]))
+])

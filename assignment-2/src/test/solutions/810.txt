@@ -1,0 +1,3 @@
+Program([
+	VarDecl(fac, ArrayType([4], StringType), ArrayLit([StringLit(tokyo), StringLit(newyork), StringLit(london)]))
+])

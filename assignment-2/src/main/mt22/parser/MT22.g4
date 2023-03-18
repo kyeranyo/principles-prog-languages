@@ -100,6 +100,7 @@ stmt
 	| doWhileStmt
 	| returnStmt
 	| continueStmt
+	| blockStmt
 	| breakStmt
 	| callStmt
 	| vardecl
@@ -112,11 +113,11 @@ assignStmt: lhs EQUAL expr SEMI;
 lhs: IDENTIFIER LSB exprlist RSB | IDENTIFIER;
 
 // if statement --------------------------------------------------------------
-ifStmt: (IF expr stmtlocal ELSE stmtlocal) | IF expr stmtlocal;
+ifStmt:  IF LB expr RB stmt | (IF LB expr RB stmt ELSE stmt);
 
 // for statement -------------------------------------------------------------
 forStmt
-	: FOR LB initExpr COMMA conditionExpr COMMA updateExpr RB stmtlocal
+	: FOR LB initExpr COMMA conditionExpr COMMA updateExpr RB stmt
 ;
 
 initExpr: IDENTIFIER EQUAL expr;
@@ -127,10 +128,10 @@ operator: LESS | GREATER | LTE | GTE | NOT_EQUAL | EQUAL_TO;
 updateExpr: expr;
 
 // while statement ------------------------------------------------------------
-whileStmt: WHILE LB expr RB stmtlocal;
+whileStmt: WHILE LB expr RB stmt;
 
 // Do while statement ---------------------------------------------------------
-doWhileStmt: DO blockStmt WHILE expr SEMI;
+doWhileStmt: DO blockStmt WHILE LB expr RB SEMI;
 
 // call statement -------------------------------------------------------------
 callStmt: (sfuncdecl | (IDENTIFIER LB (exprlist |) RB)) SEMI;

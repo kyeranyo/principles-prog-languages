@@ -1,0 +1,3 @@
+Program([
+	VarDecl(x, ArrayType([2], IntegerType), ArrayLit([BinExpr(+, StringLit(hello), IntegerLit(1)), IntegerLit(1)]))
+])
