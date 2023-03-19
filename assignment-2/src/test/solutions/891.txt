@@ -1,3 +1,0 @@
-Program([
-	FuncDecl(main, FloatType, [], None, BlockStmt([AssignStmt(Id(a), FloatLit(1.23000456e-08))]))
-])

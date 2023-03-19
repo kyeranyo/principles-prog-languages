@@ -1,1 +1,0 @@
- f,y : integer = {"abc", "xyz"}, 1==1 ; 

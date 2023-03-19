@@ -122,7 +122,7 @@ forStmt
 
 initExpr: IDENTIFIER EQUAL expr;
 
-conditionExpr: expr operator expr;
+conditionExpr: (expr operator expr) | BOOLEANLIT;
 operator: LESS | GREATER | LTE | GTE | NOT_EQUAL | EQUAL_TO;
 
 updateExpr: expr;

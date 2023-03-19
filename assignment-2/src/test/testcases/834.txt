@@ -1,9 +1,0 @@
-
-            a: integer = func(10);
-            main: function string () {
-                for(i = 3, i <= 10, i + 1) {
-                    sum = sum + i;
-                }
-                print("I Love you");
-            }
-        

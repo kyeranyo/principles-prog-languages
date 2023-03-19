@@ -1,3 +1,0 @@
-Program([
-	FuncDecl(main, BooleanType, [], None, BlockStmt([]))
-])

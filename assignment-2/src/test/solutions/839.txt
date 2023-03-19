@@ -1,3 +1,0 @@
-Program([
-	FuncDecl(main, VoidType, [InheritOutParam(delta, IntegerType)], None, BlockStmt([BlockStmt([])]))
-])

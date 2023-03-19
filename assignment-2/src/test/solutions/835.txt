@@ -1,3 +1,0 @@
-Program([
-	VarDecl(integers, ArrayType([5], IntegerType), ArrayLit([IntegerLit(1), IntegerLit(2), IntegerLit(3), StringLit(a)]))
-])

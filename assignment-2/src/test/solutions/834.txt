@@ -1,4 +1,0 @@
-Program([
-	VarDecl(a, IntegerType, FuncCall(func, [IntegerLit(10)]))
-	FuncDecl(main, StringType, [], None, BlockStmt([ForStmt(AssignStmt(Id(i), IntegerLit(3)), BinExpr(<=, Id(i), IntegerLit(10)), BinExpr(+, Id(i), IntegerLit(1)), BlockStmt([AssignStmt(Id(sum), BinExpr(+, Id(sum), Id(i)))])), CallStmt(print, StringLit(I Love you))]))
-])

@@ -1,5 +1,0 @@
-
-            main : function void (inherit out delta : integer){
-                if (n != 0 ) return 1;
-            }
-        

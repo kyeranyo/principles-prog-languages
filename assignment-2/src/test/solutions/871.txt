@@ -1,3 +1,0 @@
-Program([
-	FuncDecl(main, FloatType, [], None, BlockStmt([ReturnStmt(BinExpr(-, BinExpr(+, BinExpr(+, IntegerLit(1), IntegerLit(2)), ArrayLit([])), BinExpr(*, Id(myPI), FuncCall(foo, [BinExpr(+, BinExpr(-, ArrayCell(a, [ArrayCell(a, [IntegerLit(0)])]), IntegerLit(10)), FuncCall(swap, []))]))))]))
-])

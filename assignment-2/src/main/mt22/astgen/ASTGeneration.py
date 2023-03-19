@@ -318,6 +318,8 @@ class ASTGeneration(MT22Visitor):
 
     # Visit a parse tree produced by MT22Parser#conditionExpr.
     def visitConditionExpr(self, ctx: MT22Parser.ConditionExprContext):
+        if ctx.BOOLEANLIT():
+            return BooleanLit(True if ctx.BOOLEANLIT().getText() == "true" else False)
         return BinExpr(self.visit(ctx.operator()), self.visit(ctx.expr(0)), self.visit(ctx.expr(1)))
 
     # Visit a parse tree produced by MT22Parser#operator.

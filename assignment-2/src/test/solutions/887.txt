@@ -1,3 +1,0 @@
-Program([
-	FuncDecl(main, FloatType, [], None, BlockStmt([AssignStmt(Id(a), StringLit(This is Hung's PC))]))
-])
