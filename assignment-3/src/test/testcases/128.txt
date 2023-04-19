@@ -1,0 +1,12 @@
+
+            //var : string = foo(1.0, 2);
+            foo : function auto (inherit out z : auto, t:auto) inherit func{
+                z = 5;
+                return z + t;
+            }
+            a : auto = foo(2.0, 2);
+            b : auto = foo(3.0, 1);
+            c : float = a + b;
+            main : function void() {}
+            func : function void() {}
+            

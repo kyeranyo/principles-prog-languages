@@ -1,0 +1,13 @@
+
+            var : auto = 1;
+            func: function string(alpha : string, delta : integer){
+                var : auto = func2("123", 1) + 123;
+                var = var - func2("123", 2);
+                b : auto = 1;
+                c : integer = delta + b;
+
+            }
+            //main: function void(){}
+            func2 : function auto (alpha : string, delta : integer){}
+            func3 : function string(alpha : string, delta : integer){}
+            

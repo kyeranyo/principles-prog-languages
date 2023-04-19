@@ -1,1 +1,3 @@
-abc	
+
+            var : string = 123;
+            main: function void(){}

@@ -1,0 +1,11 @@
+
+            var : auto = "abc";
+            B : auto = 1;
+            func: function string(alpha : string, delta : integer){
+                continue;
+                return 1;
+            }
+            main: function void(){}
+            func2 : function string(alpha : string, delta : integer){}
+            func3 : function string(alpha : string, delta : integer){}
+            

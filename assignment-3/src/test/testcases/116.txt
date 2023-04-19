@@ -1,0 +1,11 @@
+
+            var : auto = "abc";
+            func: function void(alpha : string, delta : integer){
+                A : array [2,3,4,5] of integer;
+                B : integer;
+                i : auto = 12;
+                A[i,1,2,4] = 1;
+                F : string = func(var, B);
+            }
+            main: function void(){}
+            

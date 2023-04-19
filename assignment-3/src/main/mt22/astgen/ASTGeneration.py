@@ -49,8 +49,8 @@ class ASTGeneration(MT22Visitor):
     # Visit a parse tree produced by MT22Parser#dimension.
     def visitDimension(self, ctx: MT22Parser.DimensionContext):
         if ctx.getChildCount() == 1:
-            return [str(ctx.INTLIT().getText())]
-        return [str(ctx.INTLIT().getText())] + self.visit(ctx.dimension())
+            return [int(ctx.INTLIT().getText())]
+        return [int(ctx.INTLIT().getText())] + self.visit(ctx.dimension())
 
     # Visit a parse tree produced by MT22Parser#vardecl.
     def visitVardecl(self, ctx: MT22Parser.VardeclContext):

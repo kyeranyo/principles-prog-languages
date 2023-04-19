@@ -1,0 +1,44 @@
+
+            var : auto = "abc";
+            B : auto = 1;
+            integers: array [2,3,1] of auto = {{{"a"},{"1"},{"1"}},{{"1"},{"1"},{"1"}}};
+            a : string = "hello world";
+            c : float = 812.123e-10;
+            func: function string(alpha : string, delta : integer){
+                integers[0,0,0] = "abc";
+                i : integer;
+                if (i==1) 
+                    if (i==2)
+                        if (i > 3)
+                            if (i>=5)
+                                return "No matter what we breed";
+                            else {
+                                a = "abc";
+                                j : auto = 1;
+                                integers[0,0,0] = "abc";
+                            }
+                for (i = 0, i < B, i + 1){
+                    integers[0,0,0] = "abc";
+                    if (false || true){
+                        i = 2;
+                        integers[0,0,0] = "abc";
+                        break;
+                    }
+                    else if (false || true){
+                        i = 9;
+                        var : array [2,2] of auto = {{1,2},{3,4}};
+                        a = "abc";
+                        continue;
+                    }
+                    else break;
+                }
+                return "";
+                do{
+                    integers[0,0,0] = "abc";
+                }
+                while(i == 0);
+            }
+            main: function void(){}
+            func2 : function string(alpha : string, delta : integer){}
+            func3 : function string(alpha : string, delta : integer){}
+            

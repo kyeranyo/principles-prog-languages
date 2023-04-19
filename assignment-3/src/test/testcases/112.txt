@@ -1,0 +1,13 @@
+
+
+            func: function void(alpha : string, delta : integer){
+                k: auto = "123";
+                g : auto = alpha :: k;
+                
+            }
+            main: function void(){}
+            func2 : function void (alpha : string, delta : integer){
+                //func2(alpha, a);
+            }
+            func3 : function void (alpha : string) {}
+            

@@ -1,0 +1,14 @@
+
+            var : auto = "abc";
+            func: function void(alpha : string, delta : integer){
+                func2();
+                c : string;
+                b : integer;
+                a : auto = func3(c,b);
+                a = func3(func3(a, b), b);
+                a = func2() :: func3(a, b);
+            }
+            main: function void(){}
+            func2 : function string (){}
+            func3 : function string (a : string, b : integer) {}
+            

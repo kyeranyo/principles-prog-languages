@@ -1,0 +1,11 @@
+
+            var : auto = 1;
+            func: function string(alpha : string, delta : integer){
+                x, y: integer = 1, foo(1, 2, 3);  //1
+                x, y: string;                     //2
+            }
+            main: function void(){}
+            func2 : function auto (alpha : string, delta : integer){}
+            func3 : function string(){}
+            foo: function integer (x: integer, y: integer, y:integer){}   //3
+            

@@ -1,0 +1,22 @@
+
+            var : auto = "abc";
+            B : auto = 1;
+            func: function void(alpha : string, delta : integer){
+                if(B > 0){
+                    B = 0;
+                } else {
+                    B = 1;
+                }
+                i : integer;
+                for (i = 0, i < 10 , i + 1){
+                    var : auto = "abc";
+                    c : auto = 12314;
+                    var = var :: "abc";
+                    break;
+                    continue;
+                }
+                z : integer;
+                return;
+            }
+            main: function void(){}
+            

@@ -1,0 +1,27 @@
+
+            a : string = "123";
+            b : integer = 123;
+            c : boolean = true;
+            d : integer = 123;
+            e : auto = true;
+            f : auto = false;
+            func: function void(alpha : string, delta : integer){
+                i : auto = 1;
+                k: auto = "123";
+                e = false;
+                g : auto = alpha :: k;
+                m : auto = b + delta;
+
+                z : string = g :: a;
+
+                f = e && c;
+                f = f || e;
+                l : auto = f && !c;
+                
+            }
+            main: function void(){}
+            func2 : function void (alpha : string, delta : integer){
+                //func2(alpha, a);
+            }
+            func3 : function void (alpha : string) {}
+            

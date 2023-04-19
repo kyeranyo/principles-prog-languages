@@ -1,0 +1,10 @@
+
+            var : auto = "abc";
+            func: function void(alpha : string, delta : integer){
+                func2();
+                func3();
+            }
+            main: function void(){}
+            func2 : function void (){}
+            func3 : function void () {}
+            

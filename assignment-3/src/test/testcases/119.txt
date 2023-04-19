@@ -1,0 +1,13 @@
+
+            var : auto = "abc";
+            B : auto = 1;
+            func: function void(alpha : string, delta : integer){
+                if(B > 0){
+                    B = 0;
+                    //continue;
+                } else {
+                    B = 1;
+                }
+            }
+            main: function void(){}
+            

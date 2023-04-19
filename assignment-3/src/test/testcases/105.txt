@@ -1,0 +1,6 @@
+
+            var : auto = "abc";
+            func: function void(alpha : string, delta : integer){
+            }
+            main: function void(){}
+            
