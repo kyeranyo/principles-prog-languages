@@ -1,0 +1,1 @@
+Type mismatch in expression: BinExpr(==, Id(delta), IntegerLit(0))

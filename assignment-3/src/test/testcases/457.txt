@@ -1,0 +1,17 @@
+
+        double : function array[5] of integer (input : array[5] of integer) {
+            i : integer;
+            for (i = 0, i < 5, i + 1) {
+                input[i] = input[i] * 2;
+            }
+            return input;
+        }
+        main: function void () {
+            a : array[5] of integer = {1, 2, 3, 4, 5};
+            b : array[5] of integer = double(a);
+            i : integer;
+            for (i = 0, i < 5, i + 1) {
+                printInteger(b[i]);
+            }
+        }
+        

@@ -1,0 +1,10 @@
+
+            main : function void() {
+                b : float = readFloat();
+                if ((b >= 2.0) && (b <= 3.0)) {
+                    printString("b is between 2.0 and 3.0, inclusive.\n");
+                } else {
+                    printString("b is not between 2.0 and 3.0, inclusive.\n");
+                }
+            }
+        

@@ -1,0 +1,6 @@
+
+        M: function void (a: integer) inherit N {
+            super(a);
+        } 
+        N: function void (inherit a: integer) {}
+        

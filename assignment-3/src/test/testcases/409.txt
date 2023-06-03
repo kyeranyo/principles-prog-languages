@@ -1,0 +1,24 @@
+
+        isArmstrong : function boolean (n : integer) {
+            sum : integer = 0;
+            temp : integer = n;
+            while (temp > 0) {
+                digit : integer = temp % 10;
+                sum = sum + digit * digit * digit;
+                temp = temp / 10;
+            }
+            if (sum == n) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        main: function void () {
+            n : integer = 153;
+            if (isArmstrong(n)) {
+                printString("n is an Armstrong number.");
+            } else {
+                printString("n is not an Armstrong number.");
+            }
+        }
+        

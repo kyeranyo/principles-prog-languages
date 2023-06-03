@@ -1,0 +1,8 @@
+
+            main: function void () {
+                foo(2);
+            }
+            foo : function auto (a : auto) {
+                return a;
+            }
+        

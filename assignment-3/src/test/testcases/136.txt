@@ -1,0 +1,18 @@
+
+            func : function auto (a : float, b : integer){
+                c : auto = 1;
+                if (c == b){
+                    readInteger();
+                    printFloat(a);
+                    return c;
+                } 
+                else {
+                    readFloat();
+                    return b;
+                }
+                return b;
+                return "abc";
+                
+            }
+            c : integer = func(1,3);
+            

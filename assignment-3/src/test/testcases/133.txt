@@ -1,0 +1,6 @@
+
+            func : function auto (a : float, b : integer){
+                return a;
+            }
+            c : integer = func(1,3);
+            

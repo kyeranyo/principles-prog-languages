@@ -1,0 +1,17 @@
+program: function void() {
+            a: integer = 1;
+            b: integer = 2;
+            c: integer = 3;
+            d: integer = 4;
+            e: integer = 5;
+            arr: array [5] of integer = {a, b, c, d, e};
+            i : float;
+            for (i = 0, i < 5, 1) {
+                if (arr[i] % 2 == 0) {
+                    printString("even");
+                }
+                else {
+                    printString("odd");
+                }
+            }
+        }

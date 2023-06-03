@@ -1,0 +1,31 @@
+
+        sortColors : function void (nums : array[4] of integer) {
+            red : integer = 0;
+            white : integer = 0;
+            blue : integer = 0;
+            i : integer;
+            for (i = 0, i < 4, i + 1) {
+                if (nums[i] == 0) {
+                    red = red + 1;
+                } else if (nums[i] == 1) {
+                    white = white + 1;
+                } else {
+                    blue = blue + 1;
+                }
+            }
+            for (i = 0, i < red, i + 1) {
+                nums[i] = 0;
+            }
+            for (i = red, i < red + white, i + 1) {
+                nums[i] = 1;
+            }
+            for (i = red + white, i < 4, i + 1) {
+                nums[i] = 2;
+            }
+        }
+        main: function void () {
+            nums : array[4] of integer = {2, 0, 2, 1, 1, 0};
+            sortColors(nums);
+            printInt(nums);
+        }
+        

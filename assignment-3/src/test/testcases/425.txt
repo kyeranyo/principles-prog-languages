@@ -1,0 +1,8 @@
+
+            f : function auto (a : auto, b : integer) {
+                return a + b;
+            }
+            main: function void (){
+                printInteger(f(2, 2));
+            }
+        

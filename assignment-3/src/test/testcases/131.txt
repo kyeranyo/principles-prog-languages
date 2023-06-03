@@ -1,0 +1,7 @@
+
+            func : function void() {}
+            func2 : function void(inherit a : auto, inherit b:auto) inherit func {
+                super();
+            }
+            main : function void(){}
+            

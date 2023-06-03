@@ -1,3 +1,1 @@
-
-            var : string = 123;
-            main: function void(){}
+f : integer = "abc";

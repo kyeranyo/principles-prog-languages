@@ -1,0 +1,1 @@
+Type mismatch in Variable Declaration: VarDecl(factor, IntegerType, FloatLit(10.0))

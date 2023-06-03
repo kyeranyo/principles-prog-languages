@@ -1,0 +1,1 @@
+ n : array [1,2] of integer ; m : integer = n[6, 3, 5] ;

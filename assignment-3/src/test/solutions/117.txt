@@ -1,0 +1,1 @@
+Type mismatch in Variable Declaration: VarDecl(F, StringType, FuncCall(func, [Id(var), Id(B)]))

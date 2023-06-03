@@ -1,0 +1,8 @@
+
+            /* main function */
+            /* main function */
+            factor : integer = 10.0;
+            main: function float () {
+                a : auto = "He asked me: \"Where is John?\"";
+            }
+        

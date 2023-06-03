@@ -1,0 +1,20 @@
+
+        climateChange : function void (arr : array[4] of integer) {
+            n : integer = 4;
+            i : integer;
+            for (i = 0, i < n - 1, i + 1) {
+                j : integer;
+                for (j = 0, j < n - i - 1, j + 1) {
+                    if (arr[j] > arr[j + 1]) {
+                        temp : integer = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+        }
+        main: function void () {
+            arr : array[4] of integer= {64, 34, 25, 12};
+            climateChange(arr);
+        }
+        

@@ -1,0 +1,9 @@
+
+            var : string = "hello world";
+            main : function void(){
+                do{
+                    return false;
+                }while(n == 0);
+                var = "Lau Dai Tinh Ai" :: var;
+            }
+        

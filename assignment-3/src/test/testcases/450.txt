@@ -1,0 +1,7 @@
+
+        goo : function float (a : integer, b : integer) {
+                x : integer ;
+                return gau(4 , 1.3) ;
+            }
+        gau : function auto (x : integer, y : integer) {}
+        

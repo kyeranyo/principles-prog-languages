@@ -1,0 +1,20 @@
+
+            binarySearch: function integer (arr: array [10] of integer, target: integer) {
+            left: integer = 0;
+            right: integer = 9;
+            while (left <= right) {
+                mid: integer = (left + right) / 2;
+                if (arr[mid] == target) {
+                    return mid;
+                } else {
+                    if (arr[mid] < target) {
+                        left = mid + 1;
+                    }
+                    else {
+                        right = mid - 1;
+                    }
+                }
+            }
+            return -1;
+        }
+        

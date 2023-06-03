@@ -1,0 +1,8 @@
+
+            main: function void () {
+                a: integer = 10;
+                b: float = 3.14e-7;
+                c: boolean = true;
+                d , e : array[2] of integer = {1, 2}, {3, 4};
+            }
+        

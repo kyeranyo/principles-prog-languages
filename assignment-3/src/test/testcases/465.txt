@@ -1,0 +1,30 @@
+
+        islandPerimeter : function integer (grid : array[4,4] of integer) {
+            n : integer = 4;
+            m : integer = 4;
+            result : integer = 0;
+            i : integer;
+            for (i = 0, i < n, i + 1) {
+                j : integer;
+                for (j = 0, j < m, j + 1) {
+                    if (grid[i,j] == 1) {
+                        result = result + 4;
+                        if ((i > 0) && (grid[i - 1,j] == 1)) {
+                            result = result - 2;
+                        }
+                        if ((j > 0) && (grid[i,j - 1] == 1)) {
+                            result = result - 2;
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+        main: function void () {
+            grid : array [4,4] of integer = {{0, 1, 0, 0},
+                    {1, 1, 1, 0},
+                    {0, 1, 0, 0},
+                    {1, 1, 0, 0}};
+            printInteger(islandPerimeter(grid));
+        }
+        

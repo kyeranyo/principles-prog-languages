@@ -1,10 +1,9 @@
 
-            v : auto = 1;
-            c : auto = 1.0;
-            e : auto = "abc";
+            var : auto = "abc";
+            a : integer = 1;
             func: function void(alpha : string, delta : integer){
-                b : string;
-                b = v + c + e;
+                b : auto = "abc";
+                b = var;
                 
             }
             main: function void(){}

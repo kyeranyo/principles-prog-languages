@@ -2,9 +2,7 @@
             var : auto = "abc";
             a : integer = 1;
             func: function void(alpha : string, delta : integer){
-                b : auto = "abc";
-                b = var;
-                
+                a = a + 1;
             }
             main: function void(){}
             func2 : function void (alpha : string, delta : integer){}

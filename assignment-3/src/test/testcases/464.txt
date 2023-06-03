@@ -1,0 +1,23 @@
+
+        length : function integer (arr : array[5] of integer) {
+            return 5;
+        }
+        moveZeroes : function void (nums : array[5] of integer) {
+            n : integer = length(nums);
+            lastNonZeroFoundAt : integer = 0;
+            i : integer;
+            for (i = 0, i < n, i + 1) {
+                if (nums[i] != 0) {
+                    nums[lastNonZeroFoundAt] = nums[i];
+                    lastNonZeroFoundAt = lastNonZeroFoundAt + 1;
+                }
+            }
+            for (i = lastNonZeroFoundAt, i < n, i + 1) {
+                nums[i] = 0;
+            }
+        }
+        main: function void () {
+            nums : array [5] of integer = {0, 1, 0, 3, 12};
+            moveZeroes(nums);
+        }
+        

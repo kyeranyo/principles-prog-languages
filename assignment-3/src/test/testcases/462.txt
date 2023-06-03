@@ -1,0 +1,9 @@
+
+        main: function void () {
+            a : integer = foo(2.0,"abc");
+            printInteger(foo(2.0,"abc"));
+        }
+        foo : function auto (a : auto, b : auto) {
+            return "abc";
+        }
+        

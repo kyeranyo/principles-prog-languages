@@ -1,0 +1,4 @@
+
+        b : function void() {}
+        a : integer = b;
+        

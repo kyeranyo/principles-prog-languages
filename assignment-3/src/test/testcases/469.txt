@@ -1,0 +1,22 @@
+
+        transpose : function array[4,4] of integer (A : array[4,4] of integer) {
+            result : array[4,4] of integer;
+            i : integer;
+            for (i = 0, i < 4, i + 1) {
+                j : integer;
+                for (j = 0, j < 4, j + 1) {
+                    result[j,i] = A[i,j];
+                }
+            }
+            return result;
+        }
+        main: function void () {
+            A : array [4,4] of integer = {
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12},
+                {13, 14, 15, 16}
+            };
+            transpose(A);
+        }
+        

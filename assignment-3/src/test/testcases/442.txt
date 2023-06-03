@@ -1,0 +1,8 @@
+
+        bar: function void (inherit a: integer){}
+        foo: function void () inherit bar {
+            preventDefault();
+            a:integer=1;
+        }
+        main : function void(a : integer) {}
+        

@@ -1,0 +1,3 @@
+
+        fac: array [4] of string = {"tokyo", "newyork", "london"};
+        

@@ -1,0 +1,28 @@
+
+        arr: array [2,2,2,2] of integer = {
+                {
+                    { {1, 2}, {3, 4} },
+                    { {5, 6}, {7, 8} }
+                },
+                {
+                    { {9, 10}, {11, 12} },
+                    { {13, 14}, {15, 16} }
+                }
+            };
+            m: integer;
+            n: float = readInteger();
+            foo1: function auto (c: integer, d: integer) inherit foo {
+                super(2.0,512);
+                printInteger(1);
+                if (b == 1) return 1;
+                a = readFloat();
+                a = a + b;
+                arraycell : integer;
+                arraycell = arr[0,0,0,0];
+                return arraycell;
+            } 
+            foo: function auto (inherit a: float, inherit b: integer) {
+                return a;
+            }   
+            main : function void () {}
+            

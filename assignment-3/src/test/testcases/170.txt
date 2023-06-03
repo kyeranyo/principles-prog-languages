@@ -1,0 +1,6 @@
+
+        foo1: function void(inherit a: integer, inherit b: integer) {}
+        foo2: function void(a: integer, x: float) inherit foo1 {
+            preventDefault();
+        }
+        

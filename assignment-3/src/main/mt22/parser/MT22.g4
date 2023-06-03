@@ -188,7 +188,7 @@ writeFloat: WRITEFLOAT LB expr RB;
 printBoolean: PRINTBOOLEAN LB expr RB;
 readString: READSTRING LB RB;
 printString: PRINTSTRING LB expr RB;
-superCall: SUPER LB exprlist RB;
+superCall: SUPER LB (exprlist|) RB;
 preventDefault: PREVENTDEFAULT LB RB;
 
 PREVENTDEFAULT: 'preventDefault';

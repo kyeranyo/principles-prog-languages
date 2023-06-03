@@ -1,0 +1,13 @@
+
+        main: function void () {
+            if (x > 0) {
+                printString("x is positive!");
+            }
+            else if (x < 0) {
+                printString("x is negative!");
+            }
+            else {
+                printString("x is zero!");
+            }
+        }
+        

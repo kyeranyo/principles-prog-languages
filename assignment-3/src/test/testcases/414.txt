@@ -1,0 +1,17 @@
+
+        reverseList : function integer (head : auto) {
+            prev : integer = 0;
+            curr : integer = head;
+            while (curr != null) {
+                nextTemp : integer = currNext;
+                currNext = prev;
+                prev = curr;
+                curr = nextTemp;
+            }
+            return prev;
+        }
+        main: function void () {
+            head : integer = 1;
+            printInteger (reverseList(head));
+        }
+        

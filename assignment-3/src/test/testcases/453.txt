@@ -1,0 +1,24 @@
+
+        length: function integer (s : array[4] of integer) {
+            return 4;
+        }
+        plusOne : function array[4] of integer (digits : array[4] of integer) {
+            n : integer = length(digits);
+            i : integer;
+            for (i = n - 1, i >= 0, i - 1) {
+                if (digits[i] < 9) {
+                    digits[i] = digits[i] + 1;
+                    return digits;
+                }
+                digits[i] = 0;
+            }
+            for (i = 1, i < n, i + 1) {
+                digits[i] = 0;
+            }
+            return digits;
+        }
+        main: function void () {
+            digits : array[4] of integer = {1, 2, 3, 4};
+            printInteger(plusOne(digits));
+        }
+        

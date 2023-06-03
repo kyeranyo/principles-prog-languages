@@ -1,0 +1,20 @@
+
+        sumOfLeftLeaves : function integer (root : integer) {
+            if (root == 0) {
+                return 0;
+            }
+            rootLeft : integer = root - 1;
+            rootLeftLeft : integer = rootLeft - 1;
+            rootLeftRight : integer = rootLeft + 1;
+            rootRight : integer = root + 1;
+            if ((rootLeft != 0) && (rootLeftLeft == 0) && (rootLeftRight == 0)) {
+                rootLeftVal : integer = rootLeft;
+                return rootLeftVal + sumOfLeftLeaves(rootRight);
+            }
+            return sumOfLeftLeaves(rootLeft) + sumOfLeftLeaves(rootRight);
+        }
+        main: function void () {
+            root : integer = 3;
+            printInteger(sumOfLeftLeaves(root));
+        }
+        

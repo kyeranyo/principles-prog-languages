@@ -1,0 +1,20 @@
+
+        climbStairs : function integer (n : integer) {
+            if (n == 1) {
+                return 1;
+            }
+            first : integer= 1;
+            second : integer = 2;
+            i : integer;
+            for (i = 3, i <= n, i + 1) {
+                third : integer = first + second;
+                first = second;
+                second = third;
+            }
+            return second;
+        }
+        main: function void () {
+            n : integer = 4;
+            printInteger(climbStairs(n));
+        }
+        

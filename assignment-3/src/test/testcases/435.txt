@@ -1,0 +1,12 @@
+
+        foo: function auto() {
+            return 1;
+        }
+        goo: function auto() {
+            return 2;
+        }
+        main: function void () {
+            a : array [2] of integer = {foo(), goo()};
+            printInteger(a[0]);
+        }
+        

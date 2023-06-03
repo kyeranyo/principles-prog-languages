@@ -1,8 +1,8 @@
 
             var : auto = "abc";
-            a : integer = 1;
             func: function void(alpha : string, delta : integer){
-                a = a + 1;
+                var = "abc";
+                func("123", 11);
             }
             main: function void(){}
             func2 : function void (alpha : string, delta : integer){}

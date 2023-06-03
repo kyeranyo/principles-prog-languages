@@ -863,7 +863,6 @@ class ASTGenSuite(unittest.TestCase):
             main: function float () {
                 a = true || false;
                 a[0] = 19 + 123 + 19 * 13 -10 ;
-
             }
         """
         expect = """Program([
@@ -936,7 +935,6 @@ class ASTGenSuite(unittest.TestCase):
             main: function float () {
                 a = true || false;
                 b : auto;
-
             }
         """
         expect = """Program([

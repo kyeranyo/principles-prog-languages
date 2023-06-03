@@ -1,0 +1,28 @@
+
+        main: function void() {
+            arr: auto = {5, 2, 8, 4, 9, 1, 3, 7, 6, 0};
+            print("Original array: ");
+            printArray(arr);
+            insertionSort(arr);
+            print("Sorted array: ");
+            printArray(arr);
+        }
+        printArray: function void(arr: array[10] of integer) {
+            for (i = 0, i < 10, i+1) {
+                printInt(arr[i]);
+                print(" ");
+            }
+            print("\n");
+        }
+        insertionSort: function void(arr: array[10] of integer) {
+            for (i = 1, i < 10, i+1) {
+                key = arr[i];
+                j = i - 1;
+                while ((j >= 0) && (arr[j] > key)) {
+                    arr[j+1] = arr[j];
+                    j = j - 1;
+                }
+                arr[j+1] = key;
+            }
+        }
+        

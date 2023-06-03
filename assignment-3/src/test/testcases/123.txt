@@ -15,23 +15,7 @@
                             else {
                                 a = "abc";
                                 j : auto = 1;
-                                integers[0,0,0] = "abc";
                             }
-                for (i = 0, i < B, i + 1){
-                    integers[0,0,0] = "abc";
-                    if (false || true){
-                        i = 2;
-                        integers[0,0,0] = "abc";
-                        break;
-                    }
-                    else if (false || true){
-                        i = 9;
-                        var : array [2,2] of auto = {{1,2},{3,4}};
-                        a = "abc";
-                        continue;
-                    }
-                    else break;
-                }
                 return "";
             }
             main: function void(){}

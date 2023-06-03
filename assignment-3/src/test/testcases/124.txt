@@ -33,10 +33,6 @@
                     else break;
                 }
                 return "";
-                do{
-                    integers[0,0,0] = "abc";
-                }
-                while(i == 0);
             }
             main: function void(){}
             func2 : function string(alpha : string, delta : integer){}

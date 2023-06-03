@@ -1,0 +1,22 @@
+
+            func : function void() {}
+            a : auto = 1;
+            b : auto = 2;
+            c : auto = 3;
+            d : auto = 4;
+            func2 : function void(inherit a : auto, inherit b:auto) inherit func {
+                super();
+                if ( c == 1){
+                    b = a + b * c * d - c / 3;
+                }
+            }
+            func3 : function void(inherit c : auto, inherit d:auto) inherit func2 {
+                super(1,2);
+            }
+            func4 : function void(inherit j : auto, inherit f:auto) inherit func3 {
+                super(1,2);
+                d = b :: "abc";
+                a : string;
+            }
+            main : function void(){}
+            

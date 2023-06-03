@@ -1,0 +1,27 @@
+
+        sqrt : function integer (x : integer) {
+            if (x == 0) {
+                return 0;
+            }
+            if (x < 0) {
+                return -1;
+            }
+            left : integer  = 1;
+            right  : integer  = x;
+            while (left <= right) {
+                mid : integer = (left + right) / 2;
+                if (mid * mid == x) {
+                    return mid;
+                } else if (mid * mid < x) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+            return right;
+        }
+        main: function void () {
+            x : integer = 8;
+            printFloat(sqrt(x));
+        }
+        

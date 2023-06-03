@@ -1,0 +1,17 @@
+
+        length: function integer (s: string) {
+            return 2;
+        }
+        reverse : function string (s : string) {
+            result : string = "";
+            i : integer;
+            for (i = length(s) - 1, i >= 0, i - 1) {
+                result = result :: "c";
+            }
+            return result;
+        }
+        main: function void () {
+            s : string = "Hello world!";
+            printString(reverse(s));
+        }
+        

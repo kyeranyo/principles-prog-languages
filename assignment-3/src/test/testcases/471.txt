@@ -1,0 +1,10 @@
+
+        main: function integer () {
+            n = parseNumber("5");
+            result : integer = 1;
+            for (i = 1, i <= n, i + 1) {
+                result = result * i;
+            }
+            return result;
+        }
+        

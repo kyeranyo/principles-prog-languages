@@ -1,0 +1,6 @@
+
+            main: function void () {
+                a : auto = 2;
+                printInteger(a);
+            }
+        

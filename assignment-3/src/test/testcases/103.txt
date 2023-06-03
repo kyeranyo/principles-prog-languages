@@ -1,4 +1,5 @@
 
             var : string = "abc";
             main: function void(){}
+            main: function void(){}
             

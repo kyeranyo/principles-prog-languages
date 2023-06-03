@@ -1,0 +1,7 @@
+
+        foo : function float (a : integer, b : integer,c:auto) {
+                x : integer ;
+                return c;
+            }
+        goo : function auto (x : integer, y : integer) {}
+        

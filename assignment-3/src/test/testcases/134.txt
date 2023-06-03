@@ -1,0 +1,14 @@
+
+            func : function auto (a : float, b : integer){
+                c : auto = 1;
+                if (c == b){
+                    return c;
+                } 
+                else {
+                    return b;
+                }
+                return b;
+                return "abc";
+            }
+            c : integer = func(1,3);
+            

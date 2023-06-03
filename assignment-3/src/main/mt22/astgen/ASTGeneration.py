@@ -478,7 +478,8 @@ class ASTGeneration(MT22Visitor):
     # Visit a parse tree produced by MT22Parser#superCall.
     def visitSuperCall(self, ctx: MT22Parser.SuperCallContext):
         # superCall: SUPER LB expr RB;
-        return ctx.SUPER().getText(), self.visit(ctx.exprlist())
+        ret = self.visit(ctx.exprlist()) if ctx.exprlist() else []
+        return ctx.SUPER().getText(), ret
 
     # Visit a parse tree produced by MT22Parser#preventDefault.
     def visitPreventDefault(self, ctx: MT22Parser.PreventDefaultContext):

@@ -1,8 +1,15 @@
 
-
+            a : string = "123";
+            b : integer = 123;
+            c : boolean = true;
+            d : integer = 123;
+            e : auto = 1;
+            f : auto = 2;
             func: function void(alpha : string, delta : integer){
-                k: auto = "123";
-                g : auto = alpha :: k;
+                i : auto = 1;
+                k: auto = 2;
+
+                g : auto = 1 + b;
                 
             }
             main: function void(){}

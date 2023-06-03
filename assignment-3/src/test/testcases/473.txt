@@ -1,0 +1,21 @@
+
+        findCelebrity : function integer (n : integer) {
+            candidate : integer = 0;
+            i : integer;
+            for (i = 1, i < n, i + 1) {
+                if (knows(candidate, i)) {
+                    candidate = i;
+                }
+            }
+            for (i = 0, i < n, i + 1) {
+                if ((i != candidate) && ((knows(candidate, i)) || (!knows(i, candidate)))) {
+                    return -1;
+                }
+            }
+            return candidate;
+        }
+        main: function void () {
+            n = 2;
+            printInt(findCelebrity(n));
+        }
+        

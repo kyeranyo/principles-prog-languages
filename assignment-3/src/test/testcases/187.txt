@@ -1,0 +1,10 @@
+
+        foo: function auto () { return 1; }
+        main: function void () {
+            x: integer = goo() + foo();
+        }
+        goo: function auto () { 
+            if (something) return 1; 
+            else return true; 
+        }
+        
